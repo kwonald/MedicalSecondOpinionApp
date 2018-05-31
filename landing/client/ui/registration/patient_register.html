@@ -1,0 +1,83 @@
+<template name="patient_register">
+    <div class="tab-pane" id="account">
+        <div class="row">
+
+            <!-- FOR ALPHA: we do not want patients to be able to full register but to only collect information. REMOVE THIS SECTION for BETA onwards -->
+            <!-- <div class="col-lg-10 col-lg-offset-1" style="margin-left: 3%;">
+                 <span class="fa fa-envelope sicon" style="color: #e67a37;" aria-hidden="true"></span>
+                <form role="form" id="contact-form" method="" action="">
+                 <h4 style="font-family: 'Poppins', sans-serif;">Welcome to Porton! Our doctors will see you as soon as they are done testing the Porton platform with selected patients. In the meantime, you can share this link with your Doctor and kindly provide the requested details below so we can connect with you.</h4>
+                 <br />
+                 <div class="content" style="text-align: left; padding-bottom: 35px;">
+                     <div class="row">
+                         <div class="col-md-6">
+                             <div class="form-group label-floating">
+                                 <label class="control-label">First name</label>
+                                 <input type="text" name="firstname" id="firstname" class="form-control">
+                             </div>
+                         </div>
+                         <div class="col-md-6">
+                             <div class="form-group label-floating">
+                                 <label class="control-label">Last name</label>
+                                 <input type="text" name="lastname" id="lastname" class="form-control">
+                             </div>
+                         </div>
+                     </div>
+                     <div class="form-group label-floating">
+                         <label class="control-label">Email address</label>
+                         <input type="email" name="email" id="email" class="form-control"/>
+                     </div>
+                     <div class="form-group label-floating">
+                         <label class="control-label">Reason for wanting to see a doctor</label>
+                         <textarea name="message" class="form-control" id="message" rows="6"></textarea>
+                     </div>
+
+                     <div class="row">
+                         <div class="col-md-6">
+                             <div class="checkbox">
+                                 <label> -->
+                                     <!-- <input type="checkbox" name="optionsCheckboxes">
+                                     I'm not a robot
+                                 </label>
+                             </div>
+                         </div>
+                         <div class="col-md-6">
+                            <input type="submit" class="btn btn-warning btn-round" value="Send Message">
+                              <input type="submit" id="send_message" class="btn btn-warning btn-round" value="Send Message"> -->
+                        <!--  </div>
+                     </div>
+                 </div>
+             </form> -->
+            <!-- </div> --> 
+            <!-- REMOVE UP TO THIS FOR BETA ONWARDS.  -->
+
+
+            <!-- UNCOMMENT THIS SECTION FOR BETA ONWARDS. THIS FORM ALLOWS FOR PATIENT SIGN UP -->
+            <div class="col-lg-10 col-lg-offset-1">
+                <div class="form-group label-floating is-empty">
+                    <label class="control-label"><span class="text-rose">* </span>{{_ "landing.email"}}</label>
+                    <input name="patient_email" type="text" class="form-control valid" aria-required="true" aria-invalid="false">
+                    <span class="material-input"></span>
+                </div>
+
+                <div class="form-group label-floating is-empty">
+                    <label class="control-label"><span class="text-rose">* </span>{{_ "landing.password"}}</label>
+                    <input name="patient_password" type="password" class="form-control valid" aria-required="true" aria-invalid="false">
+                    <span class="material-input"></span>
+                </div>
+
+                <div class="form-group label-floating is-empty">
+                    <label class="control-label"><span class="text-rose">* </span>{{_ "landing.rePassword"}}</label>
+                    <input name="patient_passwordverify" type="password" class="form-control valid" aria-required="true" aria-invalid="false">
+                    <span class="material-input"></span>
+                </div>
+
+                <div class="form-group label-floating">
+                    <label class="control-label">Reason for wanting to see a doctor</label>
+                    <textarea name="message" class="form-control" id="message" rows="6"></textarea>
+                </div>
+            </div>
+            <!-- END OF UNCOMMENT -->
+        </div>
+    </div>
+</template>

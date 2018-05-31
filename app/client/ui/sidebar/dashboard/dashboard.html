@@ -1,0 +1,34 @@
+<template name="dashboard">
+    {{> sidebar}}
+    <div class="main-panel">
+        {{> navbar}}
+        <div class="content">
+            <div class="container-fluid">
+                {{#if isInRole 'doctor'}}
+                    {{> dailySchedule}}
+                    {{> snapshot}}
+                    {{> charts}}
+                {{else}}
+                    {{#if isInRole 'admin'}}
+                        {{> doctorRequests}}
+                        {{else}}
+                        {{#if isInRole 'patient'}}
+                            {{> dailySchedule}}
+                            {{> snapshot}}
+                            {{else}}
+                            {{#if isInRole 'employerAdmin'}}
+                                {{> employerDashboard}}
+                                {{else}}
+                                {{#if isInRole 'healthOrgAdmin'}}
+                                    {{> healthOrgDashboard}}
+                                {{/if}}
+                            {{/if}}
+                        {{/if}}
+                    {{/if}}
+                {{/if}}
+            </div>
+        </div>
+        {{> footer}}
+    </div>
+</template>
+

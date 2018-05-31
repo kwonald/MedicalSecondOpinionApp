@@ -1,0 +1,650 @@
+.no-margin {
+    margin: 0;
+}
+
+.checkbox label {
+    margin-right: 20px;
+}
+
+.table-nowrap {
+    white-space: nowrap;
+}
+
+.tap-i18n-dropdown .form-group {
+    margin: 7px;
+    padding-bottom: 0;
+}
+
+.cd-section .container {
+    height: 100%;
+}
+
+.forgot-password .title, .forgot-password .description  {
+    color: white;
+}
+
+.navbar {
+    box-shadow: 0px 0px 10px #a3a3a3;
+}
+
+.navbar-fixed-bottom {
+    padding: 0;
+    height: 70px;
+    border: none;
+    border-radius: 0;
+}
+
+.navbar-fixed-bottom .container {
+    padding:0;
+    width: 100%;
+}
+
+.navbar-nav.mobile-bar {
+    list-style: none;
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: space-around;
+    justify-content: space-around;
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
+    -webkit-align-items: stretch;
+    align-items: stretch;
+    margin: 0px 0px;
+    float: none;
+}
+.navbar-nav.mobile-bar > li {
+    -webkit-flex-grow: 1;
+    flex-grow: 1;
+    text-align: center;
+}
+.navbar-nav.mobile-bar > li > a > span.menu-icon {
+    display: block;
+    font-size: 1.8em;
+}
+.navbar-nav.mobile-bar > li > a {
+    font-size: 10px;
+    padding: 15px 5px;
+}
+.navbar-nav.mobile-bar .notification {
+    font-size: 0;
+    height: 10px;
+    padding: 0;
+    width: 10px;
+    min-width: initial;
+    top: 10px;
+    background: #ff3131;
+}
+
+#map{
+    position:relative;
+    width:100%;
+    height: calc(100% - 60px);
+    margin-top: 70px;
+}
+
+.info {
+    display: table;
+}
+
+.info>span {
+    color: white;
+    font-weight: 500;
+    display: table-cell;
+}
+
+.nav-mobile-menu a span {
+    line-height: 30px;
+}
+
+.places-buttons .btn{
+    margin-bottom: 30px
+}
+
+.space-70{
+    height: 70px;
+    display: block;
+}
+
+.btn-fav.active {
+  display: none;
+}
+
+video {
+    width: 100%;
+}
+
+.fc-time-grid-container {
+    height: 100%!important;
+}
+
+.modal-body .fc-time-grid-container {
+    height: 30vh!important;
+}
+
+#myVideo {
+    position: absolute;
+    width: 150px;
+    height: auto;
+    border: 3px solid #d9d9d9;
+    top: 80px;
+    left: 40px;
+    border-radius: 5px;
+}
+
+.media-container {
+    width: auto!important;
+}
+
+.volume-control {
+    margin-top: 0;
+}
+
+.volume-control {
+    margin-top: 0!important;
+}
+
+
+.tim-row{
+    margin-bottom: 20px;
+}
+
+.tim-typo{
+    padding-left: 25%;
+    margin-bottom: 40px;
+    position: relative;
+}
+.tim-typo .tim-note{
+    bottom: 10px;
+    color: #c0c1c2;
+    display: block;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 13px;
+    left: 0;
+    margin-left: 20px;
+    position: absolute;
+    width: 260px;
+}
+.tim-row{
+    padding-top: 50px;
+}
+.tim-row h3{
+    margin-top: 0;
+}
+
+.icon img {
+    border-radius: 100px;
+}
+
+time {
+    display: block;
+    text-align: center;
+    color: rgb(25, 24, 24);
+    font-size: 3rem;
+    font-weight: 900;
+    line-height: 2em;
+    text-align: center;
+}
+
+.session_profile .dl-horizontal {
+    height: 52vh;
+    overflow: auto;
+}
+
+.chat {
+  width: 100%;
+  float: left;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  color: #434651;
+}
+
+.chat .chat-history {
+  padding: 10px;
+  border-top: 1px solid #e5e5e5;
+  border-bottom: 1px solid #e5e5e5;
+  overflow-y: auto;
+  min-height: 150px;
+}
+.chat .chat-history .message-data {
+  margin-bottom: 15px;
+}
+.chat .chat-history .message-data-name {
+  font-weight: bold;
+}
+.chat .chat-history .message-data-time {
+  color: #a8aab1;
+  padding-left: 6px;
+}
+.chat .chat-history .message {
+  color: white;
+  padding: 18px 20px;
+  line-height: 26px;
+  font-size: 16px;
+  border-radius: 7px;
+  margin-bottom: 30px;
+  width: 90%;
+  position: relative;
+}
+.chat .chat-history .message:after {
+  bottom: 100%;
+  left: 7%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+  border-bottom-color: #86BB71;
+  border-width: 10px;
+  margin-left: -10px;
+}
+.chat .chat-history .my-message {
+  background: #86BB71;
+}
+.chat .chat-history .other-message {
+  background: #94C2ED;
+}
+.chat .chat-history .other-message:after {
+  border-bottom-color: #94C2ED;
+  left: 93%;
+}
+.chat .chat-message textarea {
+    width: 100%;
+    border: none;
+    padding: 10px 20px;
+    font: 14px/22px "Lato", Arial, sans-serif;
+    margin-bottom: 0;
+    border-radius: 0px 0px 5px 5px;
+    resize: none;
+    margin: 0 5px;
+    display: block;
+    position: relative;
+    left: -5px;
+}
+.chat .chat-message .fa-file-o,
+.chat .chat-message .fa-file-image-o {
+  font-size: 16px;
+  color: gray;
+  cursor: pointer;
+}
+.chat .chat-message button {
+  float: right;
+  color: #94C2ED;
+  font-size: 16px;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  background: #F2F5F8;
+}
+.chat .chat-message button:hover {
+  color: #75b1e8;
+}
+
+#chat-container {
+    height: 58vh;
+    overflow: auto;
+}
+
+.chat-avatar {
+    width: 40px!important;
+    height: 40px !important;
+    border-radius: 50%;
+    margin-left: 5px;
+    margin-right: 10px;
+}
+
+.chat-user {
+    font-weight: bold;
+    color: #434651;
+}
+
+.mymessage .chat-avatar {
+    margin-left: 30px;
+}
+
+.mymessage .chat-user{
+    position: relative;
+    left: 80px;
+    margin-top: -30px;
+}
+
+.mymessage .chat-msg {
+    color: white;
+    padding: 10px 20px;
+    line-height: 26px;
+    font-size: 16px;
+    border-radius: 7px;
+    margin-bottom: 30px;
+    width: 70%;
+    position: relative;
+    background: #86BB71;
+    left: 30px;
+    margin-top: 25px;
+}
+
+.mymessage .chat-msg:after {
+    bottom: 100%;
+    left: 20px;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-bottom-color: #86BB71;
+    border-width: 10px;
+    margin-left: -10px;
+}
+
+.theirmessage .chat-avatar {
+    right: 20px;
+    position: relative;
+    float: right;
+}
+
+.theirmessage .chat-user{
+    right: 30px;
+    position: relative;
+    margin-top: 10px;
+    float: right;
+    left: inherit;
+    text-align: right;
+}
+
+.theirmessage .chat-msg {
+    color: white;
+    padding: 10px 20px;
+    line-height: 26px;
+    font-size: 16px;
+    border-radius: 7px;
+    margin-bottom: 30px;
+    width: 70%;
+    position: relative;
+    background: #94C2ED;
+    margin-top: 55px;
+    float: right;
+    right: -70px;
+}
+
+.theirmessage .chat-msg:after {
+    bottom: 100%;
+    right: 10px;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-bottom-color: #94C2ED;
+    border-width: 10px;
+    margin-left: -10px;
+}
+
+#videoCall {
+    min-height: 200px;
+}
+
+#videoCall > *:first-child {
+    width:30%;
+    position: absolute;
+    top: 75px;
+    left: 35px;
+    border: 2px solid #d5d5d5;
+    z-index: 100;
+}
+
+
+
+.online,
+.offline,
+.me {
+  margin-right: 3px;
+  font-size: 10px;
+}
+
+.online {
+  color: #86BB71;
+}
+
+.offline {
+  color: #E38968;
+}
+
+.me {
+  color: #94C2ED;
+}
+
+.align-left {
+  text-align: left;
+}
+
+.align-right {
+  text-align: right;
+}
+
+.float-right {
+  float: right;
+}
+
+.clearfix:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+}
+
+.my-gallery {
+    width: 100%;
+    float: left;
+}
+.my-gallery img {
+    width: 100%;
+    height: auto;
+}
+.my-gallery figure {
+    display: block;
+    float: left;
+    margin: 0 5px 5px 0;
+    width: 31%;
+}
+.my-gallery figcaption {
+    display: none;
+}
+
+.card-title .btn-file {
+    position: absolute;
+    right: 10px;
+    top: 2px;
+    padding: 7px 15px;
+}
+
+/* -------------------- Masonry Layout --------------------- */
+/* force scrollbar */
+html { overflow-y: scroll; }
+body { font-family: sans-serif; }
+/* ---- grid ---- */
+/* clear fix */
+.grid:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+/* ---- .grid-item ---- */
+.grid-sizer {
+    max-height: 25.5vh;
+    overflow: auto;
+}
+
+.grid-sizer,
+.grid-item {
+    width: 100%;
+}
+.grid-item {
+    float: left;
+    padding: 5px;
+}
+.grid-item img {
+    display: block;
+    width: 100%;
+}
+
+@media (min-width: 992px){
+    .typo-line{
+        padding-left: 140px;
+        margin-bottom: 40px;
+        position: relative;
+    }
+
+    .typo-line .category{
+        transform: translateY(-50%);
+        top: 50%;
+        left: 0px;
+        position: absolute;
+    }
+
+    .cd-section .container {
+        //height: 100vh;
+    }
+}
+
+@media (max-width: 320px) {
+
+    .navbar {
+        padding: 0;
+    }
+    .navbar-brand>img {
+        top:-2px;
+    }
+
+}
+
+@media only screen and (max-width: 700px) {
+    /* Force table to not be like tables anymore */
+    .no-more-tables table,
+    .no-more-tables thead,
+    .no-more-tables tbody,
+    .no-more-tables th,
+    .no-more-tables td,
+    .no-more-tables tr {
+        display: block;
+    }
+
+    .no-more-tables #default {
+        display: inline;
+    }
+
+    /* Hide table headers (but not display: none;, for accessibility) */
+    .no-more-tables table {
+        overflow: hidden;
+    }
+
+    .no-more-tables thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+
+    .no-more-tables td {
+        border: none!important;
+        position: relative;
+        white-space: normal;
+        text-align: center;
+        padding: 2px!important;
+    }
+
+    .no-more-tables tr {
+        border-bottom: 1px solid #eeeeee;
+    }
+
+    .no-more-tables tfoot {
+        display: block;
+        width: 100%;
+        background: #f9f9f9;
+    }
+
+    .no-more-tables td:before {
+        /* Now like a table header */
+        position: absolute;
+        /* Top/left values mimic padding */
+        top: 12px;
+        left: 6px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        text-align:right;
+        font-weight: bold;
+    }
+
+    .no-more-tables td:before { content: attr(data-title); }
+
+    .card-calendar .fc th {
+        text-align: center;
+        font-size: 12px;
+    }
+    table > thead > tr > th {
+        width: auto !important;
+    }
+    .card-calendar .fc-toolbar {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    .fc button {
+        padding: 5px 7px;
+        font-size: 12px;
+    }
+    .fc-toolbar h2 {
+        margin-top: 10px;
+        font-size: 1.2em;
+    }
+    .main-panel {
+        padding-bottom: 50px;
+        top: 0;
+    }
+    .nav-pills > li i {
+        font-size: 20px;
+    }
+    .nav-pills > li > a {
+        font-size: 10px;
+        line-height: 15px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .dl-horizontal dt {
+        width: 100px;
+    }
+    .dl-horizontal dd {
+        margin-left: 130px;
+    }
+    .session_profile .dl-horizontal {
+        height: 40vh;
+    }
+    #chat-container {
+        height: 47vh;
+    }
+}
+
+@media (max-width: 768px ) {
+    #videoCall > *:first-child {
+        width:20%;
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    .tap-i18n-dropdown .form-group {
+        margin: 20px 0 0 0;
+        padding: 15px;
+    }
+    .tap-i18n-dropdown .form-group select {
+        color: white;
+    }
+}

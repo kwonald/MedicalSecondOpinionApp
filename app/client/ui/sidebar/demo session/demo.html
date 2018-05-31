@@ -1,0 +1,574 @@
+<template name="demo">
+    <div class="wrapper wrapper-full-page">
+        <div class="full-page full-page-alt lock-page" filter-color="white" data-image="/img/bg_physician.jpg">
+            <div class="content" id="page_lock">
+                <form method="#" action="#">
+                    <div class="card card-profile card-hidden">
+                        <div class="card-avatar">
+                            <a href="#pablo">
+                                <img class="avatar" src="/img/faces/marc.jpg" alt="...">
+                            </a>
+                        </div>
+                        {{#with currentUser}}
+                        <div class="card-content">
+                            {{#if isInRole 'patient'}}
+                            <h4 class="card-title">{{firstname}} {{lastname}}</h4>
+                            {{else}}
+                            <h4 class="card-title">{{contact_name}}</h4>
+                            {{/if}}
+                            <div class="form-group label-floating">
+                                <label class="control-label">{{_ "ui.session.enterPassword"}}</label>
+                                <input type="password" class="form-control">
+                            </div>
+                        </div>
+                        {{/with}}
+                        <div class="card-footer">
+                            <button type="button" class="btn btn-rose btn-round" id="btn_unlock">{{_ "ui.session.unlock"}}</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="full-page full-page-alt">
+            <div class="content" id="page_unlock">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-2 col-xs-4">
+                            <a type="button" class="btn btn-danger btn-block" id="end_session"><i class="material-icons">call_end</i> <span class="hidden-xs">{{_ "ui.session.endSession"}}</span> <div class="ripple-container"></div></a>
+                        </div>
+
+                        <div class="col-md-2 col-xs-4 hidden-md hidden-lg">
+                            <a type="button" class="btn btn-info btn-block" id="view_profile"><i class="material-icons">account_circle</i><div class="ripple-container"></div></a>
+                        </div>
+
+                        <div class="col-md-2 col-md-offset-3 hidden-xs hidden-sm">
+                            <time id="timer"><span id="h"></span>:<span id="m"></span>:<span id="s"></span></time>
+                        </div>
+
+                        <div class="col-md-2 col-md-offset-3 col-xs-4">
+                            <button type="button" class="btn btn-black btn-block" id="btn_lock"><i class="material-icons">lock</i> <span class="hidden-xs">{{_ "ui.session.lock"}}</span> <div class="ripple-container"></div></button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 hidden-xs hidden-sm">
+                            {{#if isDoctor}}
+                            <div class="card card-profile">
+                            {{#with user}}
+                                <div class="card-avatar">
+                                    <a href="#pablo">
+                                        <img class="img" src="{{avatar}}">
+                                    </a>
+                                </div>
+                                <div class="card-content session_profile">
+                                    
+                                    <h6 class="category text-gray">{{roles}}</h6>
+                                    <!--h4 class="card-title"><strong>{{firstname}} {{lastname}}</strong></h4-->
+                                    <h4 class="card-title"><strong>{{contact_name}}</strong></h4>
+                                    <hr>
+                                    <dl class="dl-horizontal">
+                                        <dt class="text-right">{{_ "landing.specialty1"}}</dt>
+                                        <dd class="text-left">{{specialty_1}}</dd>
+                                        <hr>
+                                        <dt class="text-right">{{_ "landing.specialty2"}}</dt>
+                                        <dd class="text-left">{{specialty_2}}</dd>
+                                        <hr>
+                                        <dt class="text-right">{{_ "landing.specialty3"}}</dt>
+                                        <dd class="text-left">{{specialty_3}}</dd>
+                                        <hr>
+                                        <dt class="text-right">{{_ "landing.subSpecialty1"}}</dt>
+                                        <dd class="text-left">{{subspecialty_1}}</dd>
+                                        <hr>
+                                        <dt class="text-right">{{_ "landing.subSpecialty2"}}</dt>
+                                        <dd class="text-left">{{subspecialty_2}}</dd>
+                                        <hr>
+                                        <dt class="text-right">{{_ "landing.subSpecialty3"}}</dt>
+                                        <dd class="text-left">{{subspecialty_3}}</dd>
+                                        <hr>
+                                        <!--dt class="text-right">{{_ "landing.specialty_other"}}</dt>
+                                        <dd class="text-left">{{specialty_other}}</dd>
+                                        <hr>
+                                        <dt class="text-right">{{_ "landing.subSpecialty_other"}}</dt>
+                                        <dd class="text-left">{{subspecialty_other}}</dd>
+                                        <hr-->
+                                        <dt class="text-right">{{_ "ui.session.dtPhone"}}</dt>
+                                        <dd class="text-left">{{phone}}</dd>
+                                        <hr>
+                                        <dt class="text-right">{{_ "ui.session.dtEmail"}}</dt>
+                                        <dd class="text-left">{{email}}</dd>
+                                        <hr>
+                                        <!--dt class="text-right">{{_ "ui.session.dtAddress"}}</dt>
+                                        <dd class="text-left">{{address}}</dd>
+                                        <hr>
+                                        <dt class="text-right">{{_ "ui.session.dtCountry"}}</dt>
+                                        <dd class="text-left">{{country}}</dd>
+                                        <hr>
+                                        <dt class="text-right">{{_ "ui.session.dtState"}}</dt>
+                                        <dd class="text-left">{{province}}</dd>
+                                        <hr>
+                                        <dt class="text-right">{{_ "ui.session.dtCity"}}</dt>
+                                        <dd class="text-left">{{city}}</dd>
+                                        <hr>
+                                        <dt class="text-right">{{_ "ui.session.dtPost"}}</dt>
+                                        <dd class="text-left">{{postcode}}</dd-->
+                                    </dl>
+                                </div>
+                                 {{/with}}
+                            </div>
+
+                            {{/if}}
+                                {{#if isPatient}}
+                                <div class="card card-profile">
+                                 {{#with user}}
+                                    <div class="card-avatar">
+                                        <a href="#pablo">
+                                            <img class="img" src="{{avatar}}">
+                                        </a>
+                                    </div>
+                                    <div class="card-content session_profile">
+                                       
+                                        <h6 class="category text-gray">{{roles}}</h6>
+                                        <h4 class="card-title"><strong>{{firstname}} {{lastname}}</strong></h4>
+                                        <hr>
+                                        <dl class="dl-horizontal">
+                                            <dt class="text-right">{{_ "ui.session.ptDOB"}}</dt>
+                                            <dd class="text-left">{{birthdate}}</dd>
+                                            <hr>
+                                            <dt class="text-right">{{_ "ui.session.ptSex"}}</dt>
+                                            <dd class="text-left">{{gender}}</dd>
+                                            <hr>
+                                            <dt class="text-right">{{_ "ui.session.ptPhone"}}</dt>
+                                            <dd class="text-left">{{phone}}</dd>
+                                            <hr>
+                                            <dt class="text-right">{{_ "ui.session.ptEmail"}}</dt>
+                                            <dd class="text-left">{{email}}</dd>
+                                            <hr>
+                                            <dt class="text-right">{{_ "ui.session.ptPhysical"}}</dt>
+                                            <dd class="text-left">{{height}} cm / {{weight}} kg</dd>
+                                            <hr>
+                                            <dt class="text-right">{{_ "ui.session.ptBT"}}</dt>
+                                            <dd class="text-left">{{blood}}</dd>
+                                            <hr>
+                                            <dt class="text-right">{{_ "ui.session.ptAllergy"}}</dt>
+                                            <dd class="text-left">{{allergy}}</dd>
+                                            <hr>
+                                            <dt class="text-right">{{_ "ui.session.ptHistory"}}</dt>
+                                            <dd class="text-left">{{fhistory}}</dd>
+                                        </dl>
+                                    </div>
+                                    {{/with}}
+                                </div>
+                            {{/if}}
+                        </div>
+                        <div class="col-md-4">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="card">
+                                        <div class="card-header card-header-icon" data-background-color="blue">
+                                            <i class="material-icons">video_call</i>
+                                        </div>
+                                        <div class="card-content">
+                                            <h4 class="card-title">{{_ "ui.session.videoTitle"}}</h4>
+                                            <div id="videoCall"></div>
+                                            <div class="make-center">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        {{#if isNotStreaming}}
+                                                        <button id="join-room" class="btn btn-success btn-block">{{_ "ui.session.connect"}}</button>
+                                                        {{/if}}
+                                                    </div>
+                                                </div>
+                                            </div>
+
+ 
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="card">
+                                        <div class="card-header card-header-icon" data-background-color="rose">
+                                            <i class="material-icons">add_a_photo</i>
+                                        </div>
+                                        <div class="card-content">
+                                            <h4 class="card-title">{{_ "ui.session.imageTitle"}}
+                                                <span >
+                                                    <button class="btn btn-rose btn-small btn-file" id="share-file" disabled>{{_ "ui.session.upload"}}</button>
+                                                </span>
+                                            </h4>
+                                            <div class="grid">
+                                                <div class="grid-sizer my-gallery" itemscope itemtype="http://schema.org/ImageGallery">
+                                                    {{#each docs}}
+                                                    <figure class="grid-item" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+                                                        <a href="{{this}}" itemprop="contentUrl" data-size="1024x1024">
+                                                            <img src="{{this}}" itemprop="thumbnail" alt="Image description" />
+                                                        </a>
+                                                        <figcaption itemprop="caption description">Image caption  1</figcaption>
+                                                    </figure>
+                                                    {{/each}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="card">
+                                        <div class="card-header card-header-icon" data-background-color="green">
+                                            <i class="material-icons">message</i>
+                                        </div>
+                                        <div class="card-content">
+                                            <h4 class="card-title">{{_ "ui.session.messageTitle"}}</h4>
+                                        </div>
+                                        <div class="chat">
+                                            <div class="chat-history">
+                                                <div id="chat-container">
+                                                    <div id="file-container" style="display: none;"></div>
+                                                    <div class="chat-output">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="chat-message clearfix">
+                                                 <textarea type="text" id="input-text-chat" placeholder ="Type your message" rows="5" disabled ></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="pswp__bg"></div>
+            <div class="pswp__scroll-wrap">
+                <div class="pswp__container">
+                    <div class="pswp__item"></div>
+                    <div class="pswp__item"></div>
+                    <div class="pswp__item"></div>
+                </div>
+                <div class="pswp__ui pswp__ui--hidden">
+                    <div class="pswp__top-bar">
+                        <div class="pswp__counter"></div>
+                        <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                        <button class="pswp__button pswp__button--share" title="Share"></button>
+                        <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                        <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                        <div class="pswp__preloader">
+                            <div class="pswp__preloader__icn">
+                                <div class="pswp__preloader__cut">
+                                    <div class="pswp__preloader__donut"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                        <div class="pswp__share-tooltip"></div>
+                    </div>
+                    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+                    </button>
+                    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+                    </button>
+                    <div class="pswp__caption">
+                        <div class="pswp__caption__center"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal" id="profile_modal" aria-labelledby="profileModalLabel">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="rescheduleModalLabel">Profile</h4>
+                </div>
+
+                <div class="modal-body">
+                    {{#if isDoctor}}
+                    <div class="card card-profile">
+                        {{#with user}}
+                        <div class="card-avatar">
+                            <a href="#pablo">
+                                <img class="img" src="{{avatar}}">
+                            </a>
+                        </div>
+                        <div class="card-content">
+                            <h6 class="category text-gray">{{roles}}</h6>
+                            <h4 class="card-title"><strong>{{contact_name}}</strong></h4>
+                            <hr>
+                            <dl class="dl-horizontal">
+                                <dt class="text-left">Specialty</dt>
+                                <dd class="text-left">{{specialty}}</dd>
+                                <hr>
+                                <dt class="text-left">Subspecialty</dt>
+                                <dd class="text-left">{{subspecialty}}</dd>
+                                <hr>
+                                <dt class="text-left">Phone</dt>
+                                <dd class="text-left">{{phone}}</dd>
+                                <hr>
+                                <dt class="text-left">Email</dt>
+                                <dd class="text-left">{{email}}</dd>
+                                <hr>
+                                <dt class="text-left">Address</dt>
+                                <dd class="text-left">{{address}}</dd>
+                                <hr>
+                                <dt class="text-left">Country</dt>
+                                <dd class="text-left">{{country}}</dd>
+                                <hr>
+                                <dt class="text-left">Region/State</dt>
+                                <dd class="text-left">{{province}}</dd>
+                                <hr>
+                                <dt class="text-left">City</dt>
+                                <dd class="text-left">{{city}}</dd>
+                                <hr>
+                                <dt class="text-left">Postal Code</dt>
+                                <dd class="text-left">{{postcode}}</dd>
+                            </dl>
+                        </div>
+                        {{/with}}
+                    </div>
+
+                    {{/if}}
+                    {{#if isPatient}}
+                    <div class="card card-profile">
+                        {{#with user}}
+                        <div class="card-avatar">
+                            <a href="#pablo">
+                                <img class="img" src="{{avatar}}">
+                            </a>
+                        </div>
+                        <div class="card-content">
+                            <h6 class="category text-gray">{{roles}}</h6>
+                            <h4 class="card-title"><strong>{{firstname}} {{lastname}}</strong></h4>
+                            <hr>
+                            <dl class="dl-horizontal">
+                                <dt class="text-left">Date of Birth</dt>
+                                <dd class="text-left">{{birthdate}}</dd>
+                                <hr>
+                                <dt class="text-left">Gender</dt>
+                                <dd class="text-left">{{gender}}</dd>
+                                <hr>
+                                <dt class="text-left">Phone</dt>
+                                <dd class="text-left">{{phone}}</dd>
+                                <hr>
+                                <dt class="text-left">Email</dt>
+                                <dd class="text-left">{{email}}</dd>
+                                <hr>
+                                <dt class="text-left">Height / Weight</dt>
+                                <dd class="text-left">{{height}} cm / {{weight}} kg</dd>
+                                <hr>
+                                <dt class="text-left">Blood Type</dt>
+                                <dd class="text-left">{{blood}}</dd>
+                                <hr>
+                                <dt class="text-left">Allergies</dt>
+                                <dd class="text-left">{{allergy}}</dd>
+                                <hr>
+                                <dt class="text-left">Family History</dt>
+                                <dd class="text-left">{{fhistory}}</dd>
+                            </dl>
+                        </div>
+                        {{/with}}
+                    </div>
+                    {{/if}}
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-black" data-dismiss="modal">Close<div class="ripple-container"></div></button>
+                </div>
+            </div>
+        </div>
+    </div>
+           
+  <script src="https://rtcmulticonnection.herokuapp.com/dist/RTCMultiConnection.min.js"></script>
+<script src="https://rtcmulticonnection.herokuapp.com/socket.io/socket.io.js"></script>
+ <!-- custom layout for HTML5 audio/video elements -->
+        <script src="https://cdn.webrtc-experiment.com/getMediaElement.js"></script>
+        <script src="https://cdn.webrtc-experiment.com:443/FileBufferReader.js"></script>
+    <script>
+
+            // ......................................................
+            // .......................UI Code........................
+            // ......................................................
+
+            document.getElementById('join-room').onclick = function() {
+                connection.checkPresence( Session.get('session_id'), function(isRoomExists, roomid) {
+                if(isRoomExists) {
+                    connection.join(roomid);
+                }
+                else {
+                    connection.open(roomid);
+                }
+                });
+
+            };
+
+
+            // ......................................................
+            // ................FileSharing/TextChat Code.............
+            // ......................................................
+
+            document.getElementById('share-file').onclick = function() {
+                var fileSelector = new FileSelector();
+                fileSelector.selectSingleFile(function(file) {
+                    connection.send(file);
+                });
+            };
+
+            document.getElementById('input-text-chat').onkeyup = function(e) {
+                if (e.keyCode != 13) return;
+
+                // removing trailing/leading whitespace
+                this.value = this.value.replace(/^\s+|\s+$/g, '');
+                if (!this.value.length) return;
+
+                connection.send(this.value,Meteor.user().firstname);
+                appendDIV(this.value, Meteor.user().firstname,Meteor.userId());
+                this.value = '';
+            };
+
+            var chatContainer = document.querySelector('.chat-output');
+
+            function appendDIV(event,name,id) {
+                var outerdiv = document.createElement('div');
+                if(id){
+                    outerdiv.className = 'row mymessage';
+                }
+                else{
+                    outerdiv.className = 'row theirmessage';
+                }
+               
+                var img = document.createElement('img');
+                img.className = 'chat-avatar'; 
+                if(id){
+                    img.src = Meteor.user().avatar;
+                }
+                else{
+                    img.src = Session.get('selected_user').avatar;
+                }
+                
+                var namediv = document.createElement('div');
+                if(id){
+                    namediv.innerHTML = name; 
+                }
+                else{
+                    namediv.innerHTML = Session.get('selected_user').firstname;
+                }
+                   
+                   namediv.className = 'chat-user';
+
+                var msgdiv = document.createElement('div');
+                msgdiv.innerHTML = event.data || event;
+                if(id){
+                   msgdiv.id = id; 
+                }
+                else{
+                    msgdiv.id = Session.get('selected_user')._id;
+                }
+                msgdiv.className = "chat-msg";
+
+                outerdiv.appendChild(img);
+                outerdiv.appendChild(namediv);
+                outerdiv.appendChild(msgdiv);
+                chatContainer.insertBefore(outerdiv, chatContainer.firstChild);
+               
+
+                document.getElementById('input-text-chat').focus();
+            }
+
+
+            // ......................................................
+            // ..................RTCMultiConnection Code.............
+            // ......................................................
+
+            var connection = new RTCMultiConnection();
+
+            connection.socketURL = 'https://rtcmulticonnection.herokuapp.com:443/';
+
+            connection.enableFileSharing = true; // by default, it is "false".
+
+            connection.session = {
+                audio: true,
+                video: true,
+                data: true
+            };
+
+            connection.sdpConstraints.mandatory = {
+                OfferToReceiveAudio: true,
+                OfferToReceiveVideo: true
+            };
+
+            connection.videosContainer = document.getElementById('videoCall');
+            connection.onstream = function(event) {
+               
+                connection.videosContainer.appendChild(event.mediaElement);
+
+                event.mediaElement.id = event.streamid;
+                  Session.set("isStreaming",true);
+                $("div.make-center").remove();
+                $( "video:first", "#videoCall").removeAttr('controls');
+                document.getElementById('share-file').disabled = false;
+                document.getElementById('input-text-chat').disabled = false;
+            };
+       
+            connection.onmessage = appendDIV;
+            connection.filesContainer = document.getElementById('file-container');
+
+            connection.maxParticipantsAllowed = 1;
+            connection.onRoomFull = function(roomid) {
+              connection.closeSocket();
+              connection.attachStreams.forEach(function(stream) {
+                stream.stop();
+              });
+
+              alert('Room is full.');
+            };
+
+            connection.onFileEnd = function (file) {                
+            var array = Session.get('docs');
+            var array1 = array.slice();
+            var array2 = array1.concat([file.url]);
+            Session.setPersistent('docs',array2);
+            console.log(file);
+            progressHelper[file.uuid].div.innerHTML = '<a href="' + file.url + '" target="_blank" download="' + file.name + '">' + file.name + '</a>';
+            };
+
+            var progressHelper = {};
+
+            connection.onFileProgress = function (chunk, uuid) {
+                var helper = progressHelper[chunk.uuid];
+                helper.progress.value = chunk.currentPosition || chunk.maxChunks || helper.progress.max;
+                updateLabel(helper.progress, helper.label);
+            };
+
+            connection.onFileStart = function (file) {
+                var div = document.createElement('div');
+
+                div.title = file.name;
+                div.innerHTML = '<label>0%</label> <progress></progress>';
+                connection.filesContainer.appendChild(div);
+                progressHelper[file.uuid] = {
+                    div: div,
+                    progress: div.querySelector('progress'),
+                    label: div.querySelector('label')
+                };
+                progressHelper[file.uuid].progress.max = file.maxChunks;
+            };
+
+            function updateLabel(progress, label) {
+                if (progress.position == -1) return;
+                var position = +progress.position.toFixed(2).split('.')[1] || 100;
+                label.innerHTML = position + '%';
+            }
+        </script>
+
+</template>
+
+

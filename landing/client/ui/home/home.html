@@ -1,0 +1,606 @@
+<template name="home">
+
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link rel="stylesheet" href="lib/simple-line-icons/css/simple-line-icons.css">
+    <link rel="stylesheet" href="lib/device-mockups/device-mockups.min.css">
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAWgmdRkG0Ls9ncrejtkWe5QufuUj9rfKI&callback=showGoogleMaps"></script>
+
+    <script src='https://www.google.com/recaptcha/api.js'>
+    </script>
+
+    <script type="text/javascript" language="javascript">
+        function recaptchaCallback() {
+            $('#submitBtn').removeAttr('disabled');
+        };
+    </script>
+
+    <script type="text/javascript">
+        var position = [49.1873458, -122.8525129];
+        function showGoogleMaps() {
+            var latLng = new google.maps.LatLng(position[0], position[1]);
+            var mapOptions = {
+                zoom: 10,
+                streetViewControl: false,
+                scaleControl: true,
+                mapTypeId: google.maps.MapTypeId.ROADMAP,
+                center: latLng
+            };
+            map = new google.maps.Map(document.getElementById('googlemaps'),
+                mapOptions);
+            marker = new google.maps.Marker({
+                position: latLng,
+                map: map,
+                draggable: false,
+                animation: google.maps.Animation.DROP
+            });
+        }
+        google.maps.event.addDomListener(window, 'load', showGoogleMaps);
+    </script>
+
+    {{> nav}}
+    <div class="cd-section" id="home">
+        <div class="home-1 section-image" style="background-image: url('/img/chat-with-doctor.jpg');" id="home-1">
+            <div class="container">
+                <div class="row" style="padding-top: 70px;">
+                    <div class="col-md-10 col-md-offset-1 text-center">
+                        <h3 class="top-banner-h3">Healthcare Beyond Boundaries</h3>
+                        <div class="orange-divider"></div>
+                        <p class="top-banner-p">Bridging the gap between you and your doctor</p>
+                        <a href="/register" class="btn btn-warning btn-round" style="margin-top:40px;">Get Started</a>
+                    </div>
+                </div>
+                <!-- <div class="row">
+                    <div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3">
+                        <div class="card card-profile card-raised">
+                            <div class="card-avatar">
+                                <div>
+                                    <img class="img" src="/img/faces/patient.jpg">
+                                </div>
+                            </div>
+                            <div class="content">
+                                <form class="form" method="" action="" id="login">
+                                    <div class="col-sm-10 col-sm-offset-1">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">email</i>
+                                            </span>
+                                            <div class="form-group label-floating">
+                                                <label class="control-label">{{_ "landing.email"}}</label>
+                                                <input type="text" name="login_email" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">lock</i>
+                                            </span>
+                                            <div class="form-group label-floating">
+                                                <label class="control-label">{{_ "landing.password"}}</label>
+                                                <input type="password" name="login_password" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <input type="submit" class="btn btn-warning btn-round" value="{{_ "landing.login"}}">
+                                </form>
+                            </div>
+                            <hr>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </div>
+
+    <!--     *********    Section 2      *********      -->
+    <div class="cd-section" id="services" style="background-color: #fff; padding: 100px 0 100px 0;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 text-center">
+                        <h2 class="section-header">Our Services</h2>
+                        <div class="orange-divider"></div>
+                        <div class="col-sm-2" style="background-color: #ebeff4; padding: 40px 0 30px 0; border-left: 1px solid #ccc; border-top: 1px solid #ccc; border-bottom: 1px solid #ccc;">
+                             <span class="fa fa-user-o sicon" style="color: #999; font-size: 50px;" aria-hidden="true"></span>
+                             <h4 style="font-family: 'Poppins', sans-serif; font-weight: 500; color: #999;">Employers</h4>
+                        </div>
+                        <div class="col-sm-4" style="background-color: #fff; padding: 40px 40px 0 40px; border: 1px solid #ccc;">
+                             <span class="fa fa-user sicon" style="color: #e67a37; font-size: 50px;" aria-hidden="true"></span>
+                             <h4 style="font-family: 'Poppins', sans-serif; font-weight: 500;">Patients</h4>
+                             <br />
+                             <p style="color: #333; font-family: 'Roboto', sans-serif; font-weight: 400; line-height: 22px; font-size: 16px;">Meet doctors from the comfort of your home, only pay per consult, or have your Insurance Provider cover you</p>
+                             <div class="w3-button">
+                                <a href="#" data-toggle="modal" data-target="#patientInfo" class="btn btn-warning btn-round" style="margin-bottom:40px;">Read More</a>
+                            </div>
+                        </div>
+                        <div class="col-sm-4" style="background-color: #fff; padding: 40px 40px 0 40px; border-top: 1px solid #ccc; border-bottom: 1px solid #ccc; border-right: 1px solid #ccc;">
+                             <span class="fa fa-user-md sicon" style="color: #e67a37; font-size: 50px;" aria-hidden="true"></span>
+                             <h4 style="font-family: 'Poppins', sans-serif; font-weight: 500;">Doctors</h4>
+                             <br />
+                             <p style="color: #333; font-family: 'Roboto', sans-serif; font-weight: 400; line-height: 22px; font-size: 16px;">Serve beyond clinic walls, ask other doctors, and engage with a professional community to help you grow</p>
+                             <div class="w3-button">
+                                <a href="#" data-toggle="modal" data-target="#physicianInfo" class="btn btn-warning btn-round" style="margin-bottom:40px;">Read More</a>
+                            </div>
+                        </div>
+                        <div class="col-sm-2" style="background-color: #ebeff4; padding: 40px 0 30px 0; border-right: 1px solid #ccc; border-top: 1px solid #ccc; border-bottom: 1px solid #ccc;">
+                             <span class="fa fa-building-o" style="color: #999; font-size: 50px;" aria-hidden="true"></span>
+                             <h4 style="font-family: 'Poppins', sans-serif; font-weight: 500; color: #999">Organizations</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+
+    <!-- Tooltip -->
+
+    <!-- <div class="tooltip-content">
+        <div class="modal fade features-modal" id="employerInfo" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-md">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <span class="fa fa-user-o sicon" style="color: #e67a37;  text-align: center; margin-bottom: 5px;" aria-hidden="true"></span>
+                        <h3 class="h3-w3l" style="font-size: 18px; font-weight: 500; letter-spacing: 1px;">Employers</h3>
+                    </div>
+                    <div class="modal-body">
+                        <p style="color: #333; font-family: 'Roboto', sans-serif; font-weight: 400; line-height: 22px; font-size: 16px; text-align: left;">Employer benefits:<br /><br />
+                        • Give your employees reliable, remote care from a single platform<br />
+                        • Create a culture of health and mental wellness<br />
+                        • Choose a plan that works for your organization<br />
+                        • Boost productivity by seeing lesser time off due to illnesses<br /><br />
+                        <a href="#" data-dismiss="modal" onclick="location.href='/register';">Sign up</a> or <a href="#" data-dismiss="modal" onclick="location.href='/login';">login</a> to see the list of available physicians and book your consults. If you need help, view our video help guides, or talk to our dedicated staff.<br />
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+    <div class="tooltip-content">
+        <div class="modal fade features-modal" id="patientInfo" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-md">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <span class="fa fa-user sicon" style="color: #e67a37;  text-align: center; font-size: 50px;" aria-hidden="true"></span>
+                        <h3 class="h3-w3l" style="font-size: 18px; font-weight: 500; letter-spacing: 1px; font-family: 'Poppins', sans-serif;">Patients</h3>
+                    </div>
+                    <div class="modal-body">
+                        <p style="color: #333; font-family: 'Roboto', sans-serif; font-weight: 400; line-height: 22px; font-size: 16px; text-align: left;">Patient benefits:<br /><br />
+                        • Immediate access to high-quality specialist services<br />
+                        • Access to your own general practitioner (Sign-up required)<br />
+                        • Choose your own appointments<br />
+                        • Easy follow-up after a clinic visit<br />
+                        • Consult in lieu of expensive travel.<br /><br />
+                        <a href="#" data-dismiss="modal" onclick="location.href='/register';">Sign up</a> or <a href="#" data-dismiss="modal" onclick="location.href='/login';">login</a> to see the list of available physicians and book your consults. If you need help, view our video help guides, or talk to our dedicated staff.<br />
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="tooltip-content">
+        <div class="modal fade features-modal" id="physicianInfo" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-md">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <span class="fa fa-user-md sicon" style="color: #e67a37; text-align: center; font-size: 50px;" aria-hidden="true"></span>
+                        <h3 class="h3-w3l" style="font-size: 18px; font-weight: 500; letter-spacing: 1px; font-family: 'Poppins', sans-serif;">Doctors</h3>
+                    </div>
+                    <div class="modal-body">
+                        <p style="color: #333; font-family: 'Roboto', sans-serif; font-weight: 400; line-height: 22px; font-size: 16px; text-align: left;">Physician benefits:<br /><br />
+                        • Provide remote, secure and private consults to existing patients<br />
+                        • Display your availability and skillsets to attract new patients<br />
+                        • Receive and give support to other physicians<br />
+                        • Improve quality of life while reducing burnout by expanding your current practice without physical stress and financial investments<br /><br />
+                        <a href="#" data-dismiss="modal" onclick="location.href='/register';">Sign up</a> or <a href="#" data-dismiss="modal" onclick="location.href='/login';">login</a> to complete your profile to see your first patient. If you need help, view our video help guides, or talk to our dedicated staff.<br />
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //Tooltip -->
+
+    <!--     *********    Section 3      *********      -->
+    <div class="cd-section" id="porton" style="background-color: #ebeff4; padding: 100px 0 100px 0; border-top: 1px solid #ccc;">
+            <div class="container text-center">
+                <div class="row">
+                    <div class="col-xs-12 text-center">
+                        <h2 class="section-header">The Porton Process</h2>
+                        <div class="orange-divider"></div>
+                        <div class="col-sm-4" style="background-color: #fff; padding: 40px 40px 0 40px; border: 1px solid #ccc;">
+                             <span class="fa fa-sign-in sicon" style="color: #e67a37; font-size: 50px;" aria-hidden="true"></span>
+                             <h4 style="font-family: 'Poppins', sans-serif; font-weight: 500;">Sign up for a consultation</h4>
+                             <br />
+                             <p style="color: #333; font-family: 'Roboto', sans-serif; font-weight: 400; line-height: 22px; font-size: 16px; padding-bottom: 30px;">Create a profile to start consulting with doctors</p>
+                        </div>
+                        <div class="col-sm-4" style="background-color: #fff; padding: 40px 40px 0 40px; border-top: 1px solid #ccc; border-bottom: 1px solid #ccc; border-right: 1px solid #ccc;">
+                             <span class="fa fa-check-square-o sicon" style="color: #e67a37; font-size: 50px;" aria-hidden="true"></span>
+                             <h4 style="font-family: 'Poppins', sans-serif; font-weight: 500;">Choose your doctor</h4>
+                             <br />
+                             <p style="color: #333; font-family: 'Roboto', sans-serif; font-weight: 400; line-height: 22px; font-size: 16px; padding-bottom: 30px;">Find your specialized doctor in the list below</p>
+                        </div>
+                        <div class="col-sm-4" style="background-color: #fff; padding: 40px 40px 0 40px; border-top: 1px solid #ccc; border-bottom: 1px solid #ccc; border-right: 1px solid #ccc;">
+                             <span class="fa fa-handshake-o sicon" style="color: #e67a37; font-size: 50px;" aria-hidden="true"></span>
+                             <h4 style="font-family: 'Poppins', sans-serif; font-weight: 500;">Book your appointment</h4>
+                             <br />
+                             <p style="color: #333; font-family: 'Roboto', sans-serif; font-weight: 400; line-height: 22px; font-size: 16px; padding-bottom: 30px;">Select an appointment time that works best for you</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix" style="margin-bottom:40px;"></div>
+                <h4 class="section-sub-header" style="padding-bottom: 10px;">Still have questions?</h4>
+                <a href="#" onclick="location.href='/faq';" class="btn btn-warning btn-round" style="margin-bottom: -20px;">Check out our FAQ</a>
+            </div>
+    </div>
+
+    <!--     *********    Section 4      *********      -->
+    <div class="cd-section" id="whyus" style="background-color: #fff; padding: 100px 0 100px 0; border-top: 1px solid #ccc;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 text-center">
+                        <h2 class="section-header">Why choose us?<br />See for yourself</h2>
+                        <div class="orange-divider"></div>
+                        <div class="col-sm-8 col-sm-offset-2" style="padding-bottom: 30px;">
+                            <img src="/img/devices.jpg" style="display: block; max-width: 100%; height: 350px;" />
+                        </div>
+                        <div class="col-sm-3" style="background-color: #ebeff4; padding: 40px 40px 0 40px; border: 1px solid #ccc;">
+                             <span class="fa fa-laptop sicon" style="color: #e67a37; font-size: 50px;" aria-hidden="true"></span>
+                             <h4 style="font-family: 'Poppins', sans-serif; font-weight: 500;">Accessibility</h4>
+                             <br />
+                             <p style="color: #333; font-family: 'Roboto', sans-serif; font-weight: 400; line-height: 22px; font-size: 16px; padding-bottom: 30px;">Book online appointments anytime, anywhere through our web-app</p>
+                        </div>
+                        <div class="col-sm-3" style="background-color: #ebeff4; padding: 40px 40px 0 40px; border-top: 1px solid #ccc; border-bottom: 1px solid #ccc; border-right: 1px solid #ccc;">
+                             <span class="fa fa-clock-o sicon" style="color: #e67a37; font-size: 50px;" aria-hidden="true"></span>
+                             <h4 style="font-family: 'Poppins', sans-serif; font-weight: 500;">No more waiting</h4>
+                             <br />
+                             <p style="color: #333; font-family: 'Roboto', sans-serif; font-weight: 400; line-height: 22px; font-size: 16px; padding-bottom: 30px;">Get instant access to doctors by viewing our physicians’ open hours</p>
+                        </div>
+                        <div class="col-sm-3" style="background-color: #ebeff4; padding: 40px 40px 0 40px; border-top: 1px solid #ccc; border-bottom: 1px solid #ccc; border-right: 1px solid #ccc;">
+                             <span class="fa fa-user-md sicon" style="color: #e67a37; font-size: 50px;" aria-hidden="true"></span>
+                             <h4 style="font-family: 'Poppins', sans-serif; font-weight: 500;">Licensed doctors</h4>
+                             <br />
+                             <p style="color: #333; font-family: 'Roboto', sans-serif; font-weight: 400; line-height: 22px; font-size: 16px; padding-bottom: 30px;">Our loyal physicians are committed to you and your medical needs</p>
+                        </div>
+                        <div class="col-sm-3" style="background-color: #ebeff4; padding: 40px 40px 0 40px; border-top: 1px solid #ccc; border-bottom: 1px solid #ccc; border-right: 1px solid #ccc;">
+                             <span class="fa fa-arrows sicon" style="color: #e67a37; font-size: 50px;" aria-hidden="true"></span>
+                             <h4 style="font-family: 'Poppins', sans-serif; font-weight: 500;">Flexibility</h4>
+                             <br />
+                             <p style="color: #333; font-family: 'Roboto', sans-serif; font-weight: 400; line-height: 22px; font-size: 16px; padding-bottom: 30px;">Choose to call, message or video chat with your physician</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+
+    <!--     *********    Section 5      *********      -->
+    <div class="cd-section" id="testimonials" style="background-color: #ebeff4; padding: 100px 0 100px 0; border-top: 1px solid #ccc;">
+            <div class="container text-center">
+                <div class="row">
+                    <div class="col-xs-12 text-center">
+                        <h2 class="section-header">Patient Testimonials</h2>
+                        <div class="orange-divider"></div>
+                        <div class="sliderrr" style="height: 240px; color: #333; margin-top: -60px; margin-bottom: -40px;">
+                          <input type="radio" name="sliderrr" title="slide1" checked="checked" class="sliderrr__nav"/>
+                          <input type="radio" name="sliderrr" title="slide2" class="sliderrr__nav"/>
+                          <input type="radio" name="sliderrr" title="slide3" class="sliderrr__nav"/>
+                          <input type="radio" name="sliderrr" title="slide4" class="sliderrr__nav"/>
+                          <div class="sliderrr__inner">
+                            <div class="sliderrr__contents">
+                              <h4 class="section-sub-header" style="padding-bottom: 20px;">Paul Gisemba</h4>
+                              <p class="sliderrr__txt">"Dr. Myrick suggested a skin-care routine for my acne while I sipped tea by my kitchen window. Easiest process ever."</p>
+                            </div>
+                            <div class="sliderrr__contents">
+                              <h4 class="section-sub-header" style="padding-bottom: 20px;">Derefaka Gogo</h4>
+                              <p class="sliderrr__txt">"My university’s clinic was booked for the entire week. I used Porton and made an appointment the next day."</p>
+                            </div>
+                            <div class="sliderrr__contents">
+                              <h4 class="section-sub-header" style="padding-bottom: 20px;">Wairimu Kuria</h4>
+                              <p class="sliderrr__txt">"I could talk to an overseas doctor who understood my depression. This global health idea is amazing."</p>
+                            </div>
+                            <div class="sliderrr__contents">
+                              <h4 class="section-sub-header" style="padding-bottom: 20px;">Noxolo Judith Ncapayi</h4>
+                              <p class="sliderrr__txt">"I received a second-opinion from my Porton doctor at no travel cost. It saved me money, time and prevented a misdiagnosis."</p>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+
+    <!--     *********    Section 6      *********      -->
+    <div class="cd-section" id="doctors" style="background-color: #fff; padding: 100px 0 100px 0; border-top: 1px solid #ccc;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 text-center">
+                        <h2 class="section-header">Meet your Doctors</h2>
+                        <div class="orange-divider"></div>
+                        <div class="col-sm-3" style="background-color: #ebeff4; padding: 0%; border: 1px solid #ccc;">
+                             <img src="img/ta1.jpg" style="display: block; max-width: 100%; height: 189px;" />
+                             <h4 style="font-family: 'Poppins', sans-serif; font-weight: 500; padding-top: 25px;">Dr. Evelyn</h4>
+                             <p style="color: #333; font-family: 'Roboto', sans-serif; font-weight: 400; line-height: 22px; font-size: 16px; padding-bottom: 30px;">Neurologist</p>
+                        </div>
+                        <div class="col-sm-3" style="background-color: #ebeff4; padding: 0%; border-top: 1px solid #ccc; border-bottom: 1px solid #ccc; border-right: 1px solid #ccc;">
+                             <img src="img/ta2.jpg" style="display: block; max-width: 100%; height: 189px;" />
+                             <h4 style="font-family: 'Poppins', sans-serif; font-weight: 500; padding-top: 25px;">Dr. Lawrence</h4>
+                             <p style="color: #333; font-family: 'Roboto', sans-serif; font-weight: 400; line-height: 22px; font-size: 16px; padding-bottom: 30px;">Cardiologist</p>
+                        </div>
+                        <div class="col-sm-3" style="background-color: #ebeff4; padding: 0%; border-top: 1px solid #ccc; border-bottom: 1px solid #ccc; border-right: 1px solid #ccc;">
+                             <img src="img/ta3.jpg" style="display: block; max-width: 100%; height: 189px;" />
+                             <h4 style="font-family: 'Poppins', sans-serif; font-weight: 500; padding-top: 25px;">Dr. Robinson</h4>
+                             <p style="color: #333; font-family: 'Roboto', sans-serif; font-weight: 400; line-height: 22px; font-size: 16px; padding-bottom: 30px;">Psychiatrist</p>
+                        </div>
+                        <div class="col-sm-3" style="background-color: #ebeff4; padding: 0%; border-top: 1px solid #ccc; border-bottom: 1px solid #ccc; border-right: 1px solid #ccc;">
+                             <img src="img/ta4.jpg" style="display: block; max-width: 100%; height: 189px;" />
+                             <h4 style="font-family: 'Poppins', sans-serif; font-weight: 500; padding-top: 25px;">Dr. Myrick</h4>
+                             <p style="color: #333; font-family: 'Roboto', sans-serif; font-weight: 400; line-height: 22px; font-size: 16px; padding-bottom: 30px;">Dermatologist</p>
+                        </div>
+                        <div class="clearfix"></div>
+                        <!-- <h3 style="color: #333; padding-top: 25px; padding-bottom: 15px;">Can’t find the right doctor? Request one!</h3> -->
+                        <a href="#" class="btn btn-warning btn-round" style="margin-right: 20px; margin-top: 40px;">See all specialists</a>
+                        <a href="#" class="btn btn-warning btn-round" style="margin-top: 40px; background-color: #313030; border-color: #313030;">Request specialist</a>
+                    </div>
+                </div>
+            </div>
+    </div>
+
+    <!--     *********    Section 7      *********      -->
+
+    <div class="cd-section" id="tryit" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../img/book-now.jpg);">
+        <div class="w3_banner">
+            <div class="container text-center">
+                <div class="slider">
+                    <div class="callbacks_container">
+                        <div class="banner_text_w3layouts" style=" padding-top: 150px; padding-bottom: 50px">
+                            <h3 style="text-align: center; color: #fff; font-weight: 500; font-size: 3em; margin: 0; letter-spacing: 0px; font-family: 'Poppins', sans-serif;	line-height: 1.4em;">Find a doctor today and book your appointment now!</h3>
+                            <a href="/register" class="btn btn-warning btn-round" style="margin-top: 40px; margin-bottom:40px;">Book online</a>
+                        </div>
+                    </div>
+               </div>
+            </div>
+        </div>
+    </div>
+
+    <!--     *********    Section 8      *********      -->
+    <div class="cd-section" id="contactus" style="background-color: #ebeff4; padding: 100px 0 100px 0; border-top: 1px solid #ccc; border-bottom: 1px solid #ccc;">
+            <div class="container text-center">
+                <div class="row">
+                    <div class="col-xs-12 text-center">
+                        <h2 class="section-header">Contact Us</h2>
+                        <div class="orange-divider"></div>
+                        <div class="col-sm-6" style="background-color: #fff; padding: 40px 40px 0 40px; border: 1px solid #ccc;">
+                             <span class="fa fa-users sicon" style="color: #e67a37; font-size: 50px;" aria-hidden="true"></span>
+                             <h4 style="font-family: 'Poppins', sans-serif; font-weight: 500;">Got questions? Connect with our team</h4>
+                             <br />
+                             <div class="description" style="padding-bottom: 10px;">
+                                 <h4 class="info-title"><strong>Drop by our office</strong></h4>
+                                 <p style="color: #333; font-family: 'Roboto', sans-serif; font-weight: 400; line-height: 24px; font-size: 16px;"> 295 - 13450 102 Ave,<br>
+                                     Surrey, BC, V3T 0A3<br>
+                                     Canada
+                                 </p>
+                             </div>
+                             <!--<div class="icon icon-primary">
+                                 <i class="material-icons">phone</i>
+                             </div>-->
+                             <div class="description" style="padding-bottom: 10px;">
+                                 <h4 class="info-title"><strong>Give us a call</strong></h4>
+                                 <p style="color: #333; font-family: 'Roboto', sans-serif; font-weight: 400; line-height: 22px; font-size: 16px;">Porton Health<br>
+                                     +1 604 288 1180<br>
+                                     Mon - Fri, 8:00AM - 5:00PM
+                                 </p>
+                             </div>
+                             <!--<div class="icon icon-primary">
+                                 <i class="material-icons">phone</i>
+                             </div>-->
+                             <div class="description" style="padding-bottom: 40px;">
+                                 <h4 class="info-title"><strong>Find us on</strong></h4>
+                                 <a href="https://www.facebook.com/pg/Porton-Health-170842906804483/about/" target="_blank"><i class="fa fa-facebook-square sicon" style="color: #3B5998; font-size: 30px;" aria-hidden="true"></i></a>&nbsp;&nbsp;<a href="https://twitter.com/PortonHealth" target="_blank"><i class="fa fa-twitter-square sicon" style="color: #1DA1F2; font-size: 30px;" aria-hidden="true"></i></a>&nbsp;&nbsp;<a href="https://plus.google.com/u/0/111777471864934030510" target="_blank"><i class="fa fa-google-plus-square" style="color: #d34836; font-size: 30px;" aria-hidden="true"></i></a>&nbsp;&nbsp;<a href="https://www.instagram.com/portonhealth/" target="_blank"><i class="fa fa-instagram sicon" style="color: #d6249f; font-size: 30px;" aria-hidden="true"></i></a>&nbsp;&nbsp;<a href="https://www.linkedin.com/company/porton-health" target="_blank"><i class="fa fa-linkedin-square sicon" style="color: #0077B5; font-size: 30px;" aria-hidden="true"></i></a>&nbsp;&nbsp;<a href="https://www.youtube.com/channel/UCZJ3tfkrBJIESr0A94vkRYg/" target="_blank"><i class="fa fa-youtube-square sicon" style="color: #d71e17; font-size: 30px;" aria-hidden="true"></i></a>
+                             </div>
+                        </div>
+                        <div class="col-sm-6" style="background-color: #fff; padding: 40px 40px 0 40px; border-top: 1px solid #ccc; border-bottom: 1px solid #ccc; border-right: 1px solid #ccc;">
+                             <span class="fa fa-envelope sicon" style="color: #e67a37; font-size: 50px;" aria-hidden="true"></span>
+                             <h4 style="font-family: 'Poppins', sans-serif; font-weight: 500;">Contact form</h4>
+                             <form role="form" id="contact-form" method="" action="">
+                              <div class="content" style="text-align: left; padding-bottom: 44px;">
+                                  <div class="row">
+                                      <div class="col-md-6">
+                                          <div class="form-group label-floating">
+                                              <label class="control-label">First name</label>
+                                              <input type="text" name="firstname" id="firstname" class="form-control">
+                                          </div>
+                                      </div>
+                                      <div class="col-md-6">
+                                          <div class="form-group label-floating">
+                                              <label class="control-label">Last name</label>
+                                              <input type="text" name="lastname" id="lastname" class="form-control">
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="form-group label-floating">
+                                      <label class="control-label">Email address</label>
+                                      <input type="email" name="email" id="email" class="form-control"/>
+                                  </div>
+                                  <div class="form-group label-floating">
+                                      <label class="control-label">Your message</label>
+                                      <textarea name="message" class="form-control" id="message" rows="6"></textarea>
+                                  </div>
+
+                                  <div class="row">
+                                      <div class="col-md-6">
+                                         <div id=recaptcha class="g-recaptcha" data-callback="recaptchaCallback" data-sitekey="6LfYLzMUAAAAAEM4TUmtKZBIWEe7CBYFjYOlf8BZ"></div>
+                                      </div>
+                                      <div class="col-md-6 text-right">
+                                         <input type="submit" id='submitBtn' class="btn btn-warning btn-round" value="Send Message" disabled>
+                                          <!-- <input type="submit" id="send_message" class="btn btn-warning btn-round" value="Send Message"> -->
+                                      </div>
+                                  </div>
+                              </div>
+                          </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+
+    <!--     *********    Section 9      *********      -->
+    <div id="googlemaps"></div>
+
+    {{> footer_landing_top}}
+    {{> footer_landing}}
+
+    <!-- <div class="cd-section" id="about">
+        <div class="testimonials-3">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-10 col-xs-offset-1 text-center">
+                        <h2 class="title">About us</h2>
+                        <h5 class="description">
+                            <p>Conceived and developed through the efforts of collaboration and experience of Care Providers, Patients, and Technology professionals with a core focus on what matters to each population whether it be Patient, Provider or support personnel, the Porton Platform facilitates real time consults between subscribed providers patients and care organisations. In addition our platform allows for the ability to receive a health second-opinion for those important and critical health decisions subscribers have to make.</p>
+
+                            <p>Our services are affordable and provide timely access to specialist care and second opinions to underserved populations around the globe. Our platform provides secure communication channels be it chat, video, email or voice to patients in underserved and sometime technologically and geographical challenged states of the continent access to a diversity of specialists.</p>
+                        </h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="cd-section" id="ss">
+        <div class="contactus-1 section-image" style="background-image: url('/img/examples/city.jpg')">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-5">
+                        <h2 class="title">Get in Touch</h2>
+                        <h5 class="description">To learn more about how <strong>Porton</strong> can assist you or your organization, please give us a call or send us an email.</h5>
+                        <div class="info info-horizontal">
+                            <div class="icon icon-primary">
+                                <i class="material-icons">pin_drop</i>
+                            </div>
+                            <div class="description">
+                                <h4 class="info-title"><strong>Find us at the office</strong></h4>
+                                <p> 1111 West Georgia Street,<br>
+                                    Vancouver, BC, V1E 1E1<br>
+                                    Canada
+                                </p>
+                            </div>
+                        </div>
+                        <div class="info info-horizontal">
+                            <div class="icon icon-primary">
+                                <i class="material-icons">phone</i>
+                            </div>
+                            <div class="description">
+                                <h4 class="info-title"><strong>Give us a ring</strong></h4>
+                                <p>John Doe<br>
+                                    +1 604 000 0000<br>
+                                    Mon - Fri, 8:00-22:00
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5 col-md-offset-2">
+                        <div class="card card-contact">
+                            <form role="form" id="contact-form" method="post">
+                                <div class="header header-raised header-warning text-center">
+                                    <h4><strong>Contact Us</strong></h4>
+                                </div>
+                                <div class="content">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group label-floating">
+                                                <label class="control-label">First name</label>
+                                                <input type="text" name="name" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group label-floating">
+                                                <label class="control-label">Last name</label>
+                                                <input type="text" name="name" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group label-floating">
+                                        <label class="control-label">Email address</label>
+                                        <input type="email" name="email" class="form-control"/>
+                                    </div>
+                                    <div class="form-group label-floating">
+                                        <label class="control-label">Your message</label>
+                                        <textarea name="message" class="form-control" id="message" rows="6"></textarea>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" name="optionsCheckboxes">
+                                                    I'm not a robot
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <button type="submit" class="btn btn-rose pull-right">Send Message</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+    <!--     *********    Vertical Navigation      *********      -->
+    <nav id="cd-vertical-nav" class="hidden-xs">
+        <ul>
+            <li>
+                <a href="#home" data-number="1">
+                    <span class="cd-dot"></span>
+                    <span class="cd-label">Home</span>
+                </a>
+            </li>
+            <li>
+                <a href="#services" data-number="2">
+                    <span class="cd-dot"></span>
+                    <span class="cd-label">Services</span>
+                </a>
+            </li>
+            <li>
+                <a href="#porton" data-number="3">
+                    <span class="cd-dot"></span>
+                    <span class="cd-label">Porton Process</span>
+                </a>
+            </li>
+            <li>
+                <a href="#whyus" data-number="4">
+                    <span class="cd-dot"></span>
+                    <span class="cd-label">Why Porton?</span>
+                </a>
+            </li>
+            <li>
+                <a href="#testimonials" data-number="5">
+                    <span class="cd-dot"></span>
+                    <span class="cd-label">Testimonials</span>
+                </a>
+            </li>
+            <li>
+                <a href="#doctors" data-number="6">
+                    <span class="cd-dot"></span>
+                    <span class="cd-label">Doctors</span>
+                </a>
+            </li>
+            <li>
+                <a href="#contactus" data-number="7">
+                    <span class="cd-dot"></span>
+                    <span class="cd-label">Contact us</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+</template>

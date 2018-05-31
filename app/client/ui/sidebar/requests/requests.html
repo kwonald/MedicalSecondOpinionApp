@@ -1,0 +1,335 @@
+<template name="requests">
+    {{> sidebar}}
+    <div class="main-panel">
+        {{> navbar}}
+        <div class="content">
+            <div class="container-fluid">
+                {{#if isInRole 'doctor'}}
+                    {{> sent_Requests}}
+                    {{> incoming_Requests}}
+                {{else}}
+                    {{#if isInRole 'patient'}}
+                         {{> sent_Requests}}
+                    {{/if}}
+                {{/if}}
+
+            </div>
+        </div>
+        {{> footer}}
+    </div>
+    <!-- Modal Receipt -->
+    <div class="modal fade" id="receipt" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h5 class="modal-title" id="exampleModalLongTitle">Receipt</h5>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-xs-6 col-sm-6 col-md-6">
+                            <address>
+                                <strong>Emily Erenes</strong>
+                                <br>
+                                2135 Sunset Blvd
+                                <br>
+                                Los Angeles, CA 90026
+                                <br>
+                                <abbr title="Phone">P:</abbr> (213) 484-6829
+                            </address>
+                        </div>
+                        <div class="col-xs-6 col-sm-6 col-md-6 text-right">
+                            <p>Date: 8 January, 2017</p>
+                            <p>Receipt #: 34522677W</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 no-more-tables">
+                            <div class="text-center">
+                                <h2>Receipt</h2>
+                            </div>
+                            <table class="table table-hover">
+                                <thead>
+                                <tr>
+                                    <th>Item</th>
+                                    <th>Duration</th>
+                                    <th class="text-center">Price</th>
+                                    <th class="text-center">Total</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td class="col-md-9">Consultiing Session</td>
+                                    <td class="col-md-1" style="text-align: center"> 1 Hour </td>
+                                    <td class="col-md-1 text-center">$50</td>
+                                    <td class="col-md-1 text-center">$50</td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td class="text-right">
+                                        <p>
+                                            <strong>Subtotal: </strong>
+                                        </p>
+                                        <p>
+                                            <strong>Tax: </strong>
+                                        </p></td>
+                                    <td class="text-center">
+                                        <p>
+                                            <strong>$50</strong>
+                                        </p>
+                                        <p>
+                                            <strong>$0</strong>
+                                        </p></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td class="text-right"><h4><strong>Total: </strong></h4></td>
+                                    <td class="text-center text-danger"><h4><strong>$50</strong></h4></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-black" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-info">Print</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+
+<template name="sent_Requests">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header card-header-icon" data-background-color="green">
+                    <i class="material-icons">alarm_on</i>
+                </div>
+                <div class="card-content">
+                    <h4 class="card-title">{{_ "ui.requests.title"}}</h4>
+                    <!--<button id="test">test</button>-->
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="table-responsive no-more-tables">
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th class="disabled-sorting"></th>
+                                        <th>{{_ "ui.requests.name"}}</th>
+                                        <th>{{_ "ui.requests.specialty"}}</th>
+                                        <th>{{_ "ui.requests.date"}}</th>
+                                        <th>{{_ "ui.requests.time"}}</th>
+                                        <th>{{_ "ui.requests.status"}}</th>
+                                        <th class="disabled-sorting text-right">{{_ "ui.requests.actions"}}</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {{#each sent_requests}}
+                                        <tr>
+                                            <td>
+                                                <div class="avatar_mini">
+                                                    <img src="{{doctor.avatar}}">
+                                                </div>
+                                            </td>
+                                            <td>{{doctor.contact_name}}</td>
+                                            <td>{{doctor.subspecialty}}</td>
+                                            <td>{{date}}</td>
+                                            <td>{{start}} - {{end}}</td>
+                                            <td>{{status}}</td>
+                                            <td class="text-right">
+                                            {{#if isWaiting status}}
+                                                <button type="button" id="pay_request" rel="tooltip" class="btn btn-info">
+                                                    <i class="material-icons">payment</i>
+                                                    <span> {{_ "ui.requests.pay"}} </span>
+                                                </button>
+                                             
+                                            {{/if}}
+                                            {{#if isNew status}}
+                                                <button type="button" id="reschedule_request" rel="tooltip" class="btn btn-rose">
+                                                    <i class="material-icons">alarm_on</i>
+                                                    <span> {{_ "ui.requests.reschedule"}} </span>
+                                                </button>
+                                                <button type="button" id="cancel_request" rel="tooltip" class="btn btn-rose">
+                                                    <i class="material-icons">cancel</i>
+                                                    <span> {{_ "ui.requests.cancel"}} </span>
+                                                </button>
+                                            {{/if}}
+                                             {{#if isDeclined status}}
+                                                <button type="button" id="reschedule_request" rel="tooltip" class="btn btn-rose">
+                                                    <i class="material-icons">alarm_on</i>
+                                                    <span> {{_ "ui.requests.reschedule"}} </span>
+                                                    <button type="button" id="cancel_request" rel="tooltip" class="btn btn-rose">
+                                                    <i class="material-icons">cancel</i>
+                                                    <span> {{_ "ui.requests.cancel"}} </span>
+                                                </button>
+                                                </button>
+                                            {{/if}}
+                                            </td>
+                                        </tr>
+                                    {{/each}}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="reschedule_modal" aria-labelledby="rescheduleModalLabel">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="rescheduleModalLabel">{{_ "ui.requests.reschedule"}}</h4>
+                </div>
+
+                <div class="modal-body">
+                <div class = "row">
+                    {{#if isDesktop}}
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="label-control">{{_ "ui.requests.date"}}</label>
+                            <input type="input" class="form-control datepicker" id="reschedule_date">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="label-control">{{_ "ui.requests.from"}}</label>
+                            <input type="input" class="form-control timepicker" id="reschedule_start">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="label-control">{{_ "ui.requests.to"}}</label>
+                            <input type="input" class="form-control timepicker" id="reschedule_end">
+                        </div>
+                    </div>
+                    {{/if}}
+                    {{#if isTablet}}
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="label-control">{{_ "ui.requests.date"}}</label>
+                            <input type="date" name="date" class="form-control" id="reschedule_date">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="label-control">{{_ "ui.requests.from"}}</label>
+                            <input type="time" name="time" class="form-control" id="reschedule_start">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="label-control">{{_ "ui.requests.to"}}</label>
+                            <input type="time" name="time" class="form-control" id="reschedule_end">
+                        </div>
+                    </div>
+                    {{/if}}
+                    {{#if isPhone}}
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="label-control">{{_ "ui.requests.date"}}</label>
+                                <input type="date" name="date" class="form-control" id="reschedule_date">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                             <div class="form-group">
+                                <label class="label-control">{{_ "ui.requests.from"}}</label>
+                                <input type="time" name="time" class="form-control" id="reschedule_start">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                             <div class="form-group">
+                                <label class="label-control">{{_ "ui.requests.to"}}</label>
+                                <input type="time" name="time" class="form-control" id="reschedule_end">
+                            </div>
+                        </div>
+                    {{/if}}
+                </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-black" data-dismiss="modal">{{_ "ui.requests.cancel"}}<div class="ripple-container"></div></button>
+                    <button class="btn btn-success " id="reschedule_confirm">{{_ "ui.requests.request"}}<div class="ripple-container"></div></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+
+<template name="incoming_Requests">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header card-header-icon" data-background-color="rose">
+                    <i class="material-icons">alarm_on</i>
+                </div>
+
+                <div class="card-content">
+                    <h4 class="card-title">{{_ "ui.requests.incoming"}}</h4>
+                    <div class="toolbar">
+                    </div>
+                    <div class="material-datatables no-more-tables">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th class="disabled-sorting"></th>
+                                <th>{{_ "ui.requests.name"}}</th>
+                                <th>{{_ "ui.requests.type"}}</th>
+                                <th>{{_ "ui.requests.date"}}</th>
+                                <th>{{_ "ui.requests.time"}}</th>
+                                <th>{{_ "ui.requests.status"}}</th>
+                                <th class="disabled-sorting text-right">{{_ "ui.requests.actions"}}</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {{#each requests}}
+                            <tr>
+                                <td>
+                                    <div class="avatar_mini">
+                                        <img src="{{sender.avatar}}">
+                                    </div>
+                                </td>
+                                <td>{{sender.firstname}} {{sender.lastname}}</td>
+                                <td>{{type}}</td>
+                                <td>{{date}}</td>
+                                <td>{{start}} - {{end}}</td>
+                                <td>{{status}}</td>
+                                <td class="text-right">
+                                    {{#if isNew status}}
+                                        <button type="button" id="confirm_request" rel="tooltip" class="btn btn-success">
+                                            {{_ "ui.requests.confirm"}}
+                                        </button>
+                                        <button type="button" id="decline_request" rel="tooltip" class="btn btn-danger">
+                                            {{_ "ui.requests.decline"}}
+                                        </button>
+                                    {{/if}}
+                                    {{#if isPaid status}}
+                                       <button type="button" rel="tooltip" class="btn btn-info btn-simple" data-toggle="modal" data-target="#receipt">
+                                        <i class="material-icons">receipt</i>
+                                        <span> Receipt </span>
+                                        </button>
+                                    {{/if}}
+
+                                </td>
+                            </tr>
+                            {{/each}}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{> paypal_account_modal}}
+</template>
+

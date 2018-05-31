@@ -1,0 +1,1316 @@
+<template name="profile">
+    {{> sidebar}}
+    <div class="main-panel">
+        {{> navbar}}
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-3 col-md-offset-9">
+                        <button type="button" class="btn btn-success btn-block" id="profile_confirm"><i class="material-icons">save</i> {{_ "ui.profile.save"}} <div class="ripple-container"></div></button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card wizard-card">
+                            <div class="card-header card-header-icon" data-background-color="rose">
+                                <i class="material-icons">settings</i>
+                            </div>
+                            <div class="card-content">
+                                <h4 class="card-title">{{_ "ui.profile.title"}}</h4>
+                                <form>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="picture-container">
+                                                <div class="picture">
+                                                    <img src="{{avatar}}" class="picture-src">
+                                                   <input type="file" class="file_bag" id = "uploadAvatar">
+                                                </div>
+                                                <h6>{{_ "ui.profile.photo"}}</h6>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    {{#if isInRole 'doctor,onhold'}}
+                                    <div class="row">
+                                        <div class="col-md-4 col-sm-4">
+                                            <legend>{{_ "ui.profile.doc"}} 1</legend>
+                                            <div class="fileinput fileinput-new text-center" data-provides="fileinput">
+                                                <div class="fileinput-new thumbnail">
+                                                    <img src="/img/certificate1.jpg" alt="...">
+                                                </div>
+                                                <div class="fileinput-preview fileinput-exists thumbnail"></div>
+                                                <div>
+                                                        <span class="btn btn-rose btn-round btn-file">
+                                                            <span class="fileinput-new">{{_ "ui.profile.uploadImage"}}</span>
+                                                            <span class="fileinput-exists">{{_ "ui.profile.changeImage"}}</span>
+                                                            <input type="file" name="...">
+                                                        </span>
+                                                    <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> Remove</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-sm-4">
+                                            <legend>{{_ "ui.profile.doc"}} 2</legend>
+                                            <div class="fileinput fileinput-new text-center" data-provides="fileinput">
+                                                <div class="fileinput-new thumbnail">
+                                                    <img src="/img/certificate2.jpg" alt="...">
+                                                </div>
+                                                <div class="fileinput-preview fileinput-exists thumbnail"></div>
+                                                <div>
+                                                        <span class="btn btn-rose btn-round btn-file">
+                                                            <span class="fileinput-new">{{_ "ui.profile.uploadImage"}}</span>
+                                                            <span class="fileinput-exists">{{_ "ui.profile.changeImage"}}</span>
+                                                            <input type="file" name="...">
+                                                        </span>
+                                                    <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> Remove</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-sm-4">
+                                            <legend>{{_ "ui.profile.doc"}} 3</legend>
+                                            <div class="fileinput fileinput-new text-center" data-provides="fileinput">
+                                                <div class="fileinput-new thumbnail">
+                                                    <img src="/img/certificate3.jpg" alt="...">
+                                                </div>
+                                                <div class="fileinput-preview fileinput-exists thumbnail"></div>
+                                                <div>
+                                                        <span class="btn btn-rose btn-round btn-file">
+                                                            <span class="fileinput-new">{{_ "ui.profile.uploadImage"}}</span>
+                                                            <span class="fileinput-exists">{{_ "ui.profile.changeImage"}}</span>
+                                                            <input type="file" name="...">
+                                                        </span>
+                                                    <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> Remove</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="control-label">{{_ "ui.profile.contactName"}}</label>
+                                                <input type="text" id="profile_contactname" class="form-control">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="control-label">{{_ "ui.profile.email"}}</label>
+                                                <input type="email" name="email" id="profile_email" class="form-control">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="control-label">{{_ "ui.profile.phone"}}</label>
+                                                <input type="tel" name="tel" id="profile_phone" class="form-control">
+                                            </div>
+                                        </div>
+
+                                        <!--div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="control-label">{{_ "ui.profile.firstName"}}</label>
+                                                <input type="text" id="profile_firstname" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="control-label">{{_ "ui.profile.lastName"}}</label>
+                                                <input type="text" id="profile_lastname" class="form-control">
+                                            </div>
+                                        </div-->
+                                    </div>
+                                    <div class="row">
+                                        <!-- PayPal -->
+                                        <!--div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="control-label">{{_ "ui.profile.p-email"}}</label>
+                                                <input type="email" name="paypal_email" id="paypal_email" class="form-control">
+                                            </div>
+                                        </div-->
+
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label class="control-label">{{_ "ui.profile.country"}}</label>
+                                                <select id="profile_country" class="form-control">
+                                                    <option disabled="" selected=""></option>
+                                                    <option value="Canada">Canada</option>
+                                                    <option value="England">England</option>
+                                                    <option value="Nigeria">Nigeria</option>
+                                                    <option value="Northern Ireland">Northern Ireland</option>
+                                                    <option value="Scotland">Scotland</option>
+                                                    <option value="South Africa">South Africa</option>
+                                                    <option value="United States">United States</option>
+                                                    <option value="Wales">Wales</option>
+                                                </select>
+                                                <span class="material-input"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label class="control-label">{{_ "landing.boardCertified"}}</label>
+                                                <select name="doctor_boardCertified" class="form-control">
+                                                    <option disabled="" selected=""></option>
+                                                    <option value="certified">{{_ "landing.certified"}}</option>
+                                                    <option value="eligible">{{_ "landing.eligible"}}</option>
+                                                </select>
+                                                <span class="material-input"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label class="control-label">{{_ "landing.year"}}</label>
+                                                <input name="doctor_certifiedYear" type="text" class="form-control">
+                                                <span class="material-input"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label class="control-label">{{_ "landing.licenseLocation"}}</label>
+                                                <select name="doctor_license_location" class="form-control">
+                                                    <option disabled="">----------- US -----------</option>
+                                                    <option value="AK">AK</option>
+                                                    <option value="AL">AL</option>
+                                                    <option value="AR">AR</option>
+                                                    <option value="AZ">AZ</option>
+                                                    <option value="CA">CA</option>
+                                                    <option value="CO">CO</option>
+                                                    <option value="CT">CT</option>
+                                                    <option value="DC">DC</option>
+                                                    <option value="DE">DE</option>
+                                                    <option value="FL">FL</option>
+                                                    <option value="GA">GA</option>
+                                                    <option value="HI">HI</option>
+                                                    <option value="13">IA</option>
+                                                    <option value="IA">ID</option>
+                                                    <option value="IL">IL</option>
+                                                    <option value="IN">IN</option>
+                                                    <option value="KS">KS</option>
+                                                    <option value="KY">KY</option>
+                                                    <option value="LA">LA</option>
+                                                    <option value="MA">MA</option>
+                                                    <option value="MD">MD</option>
+                                                    <option value="ME">ME</option>
+                                                    <option value="MI">MI</option>
+                                                    <option value="MN">MN</option>
+                                                    <option value="MO">MO</option>
+                                                    <option value="MS">MS</option>
+                                                    <option value="MT">MT</option>
+                                                    <option value="NC">NC</option>
+                                                    <option value="ND">ND</option>
+                                                    <option value="NE">NE</option>
+                                                    <option value="NH">NH</option>
+                                                    <option value="NJ">NJ</option>
+                                                    <option value="NM">NM</option>
+                                                    <option value="NV">NV</option>
+                                                    <option value="NY">NY</option>
+                                                    <option value="OH">OH</option>
+                                                    <option value="OK">OK</option>
+                                                    <option value="OR">OR</option>
+                                                    <option value="PA">PA</option>
+                                                    <option value="RI">RI</option>
+                                                    <option value="SC">SC</option>
+                                                    <option value="SD">SD</option>
+                                                    <option value="TN">TN</option>
+                                                    <option value="TX">TX</option>
+                                                    <option value="UT">UT</option>
+                                                    <option value="VA">VA</option>
+                                                    <option value="VT">VT</option>
+                                                    <option value="WA">WA</option>
+                                                    <option value="WI">WI</option>
+                                                    <option value="WV">WV</option>
+                                                    <option value="WY">WY</option>
+                                                    <option disabled="">--------- Canada ---------</option>
+                                                    <option value="Alberta">Alberta (AB)</option>
+                                                    <option value="British Columbia">British Columbia (BC)</option>
+                                                    <option value="Manitoba">Manitoba (MB)</option>
+                                                    <option value="New Brunswick">New Brunswick (NB)</option>
+                                                    <option value="Newfoundland and Labrador">Newfoundland and Labrador (NL)</option>
+                                                    <option value="Northwest Territories">Northwest Territories (NT)</option>
+                                                    <option value="Nova Scotia">Nova Scotia (NS)</option>
+                                                    <option value="Nunavut">Nunavut (NU)</option>
+                                                    <option value="Ontario">Ontario (ON)</option>
+                                                    <option value="Prince Edward Island">Prince Edward Island (PE)</option>
+                                                    <option value="Quebec">Quebec (QC)</option>
+                                                    <option value="Saskatchewan">Saskatchewan (SK)</option>
+                                                    <option value="Yukon">Yukon (YT)</option>
+                                                    <option disabled="">----------- Nigeria -----------</option>
+                                                    <option value="Abia">Abia</option>
+                                                    <option value="Adamawa">Adamawa</option>
+                                                    <option value="Anambra">Anambra</option>
+                                                    <option value="Akwa Ibom">Akwa Ibom</option>
+                                                    <option value="Bauchi">Bauchi</option>
+                                                    <option value="Bayelsa">Bayelsa</option>
+                                                    <option value="Benue">Benue</option>
+                                                    <option value="Borno">Borno</option>
+                                                    <option value="Cross River">Cross River</option>
+                                                    <option value="Delta">Delta</option>
+                                                    <option value="Ebonyi">Ebonyi</option>
+                                                    <option value="Enugu">Enugu</option>
+                                                    <option value="Ekiti">Ekiti</option>
+                                                    <option value="Gombe">Gombe</option>
+                                                    <option value="Imo">Imo</option>
+                                                    <option value="Jigawa">Jigawa</option>
+                                                    <option value="Kaduna">Kaduna</option>
+                                                    <option value="Kano">Kano</option>
+                                                    <option value="Katsina">Katsina</option>
+                                                    <option value="Kebbi">Kebbi</option>
+                                                    <option value="Kogi">Kogi</option>
+                                                    <option value="Kwara">Kwara</option>
+                                                    <option value="Lagos">Lagos</option>
+                                                    <option value="Nasarawa">Nasarawa</option>
+                                                    <option value="Niger">Niger</option>
+                                                    <option value="Ogun">Ogun</option>
+                                                    <option value="Ondo">Ondo</option>
+                                                    <option value="Osun">Osun</option>
+                                                    <option value="Oyo">Oyo</option>
+                                                    <option value="Plateau">Plateau</option>
+                                                    <option value="Rivers">Rivers</option>
+                                                    <option value="Sokoto">Sokoto</option>
+                                                    <option value="Taraba">Taraba</option>
+                                                    <option value="Yobe">Yobe</option>
+                                                    <option value="Zamfara">Zamfara</option>
+                                                    <option disabled="">----------- England -----------</option>
+                                                    <option value="Avon">Avon</option>
+                                                    <option value="Bedfordshire">Bedfordshire</option>
+                                                    <option value="Berkshire">Berkshire</option>
+                                                    <option value="Buckinghamshire">Buckinghamshire</option>
+                                                    <option value="Cambridgeshire">Cambridgeshire</option>
+                                                    <option value="Cheshire">Cheshire</option>
+                                                    <option value="Cleveland">Cleveland</option>
+                                                    <option value="Co. Durham">Co. Durham</option>
+                                                    <option value="Cornwall">Cornwall</option>
+                                                    <option value="Cumberland">Cumberland</option>
+                                                    <option value="Cumbria">Cumbria</option>
+                                                    <option value="Derbyshire">Derbyshire</option>
+                                                    <option value="Devon">Devon</option>
+                                                    <option value="Dorset">Dorset</option>
+                                                    <option value="East Riding of Yorkshire">East Riding of Yorkshire</option>
+                                                    <option value="East Sussex">East Sussex</option>
+                                                    <option value="Essex">Essex</option>
+                                                    <option value="Gloucestershire">Gloucestershire</option>
+                                                    <option value="Greater Manchester">Greater Manchester</option>
+                                                    <option value="Hampshire">Hampshire</option>
+                                                    <option value="Hereford and Worcester">Hereford and Worcester</option>
+                                                    <option value="Herefordshire">Herefordshire</option>
+                                                    <option value="Hertfordshire">Hertfordshire</option>
+                                                    <option value="Humberside">Humberside</option>
+                                                    <option value="Huntingdonshire">Huntingdonshire</option>
+                                                    <option value="Isle of Wight">Isle of Wight</option>
+                                                    <option value="Kent">Kent</option>
+                                                    <option value="Lancashire">Lancashire</option>
+                                                    <option value="Leicestershire">Leicestershire</option>
+                                                    <option value="Lincolnshire">Lincolnshire</option>
+                                                    <option value="Merseyside">Merseyside</option>
+                                                    <option value="Norfolk">Norfolk</option>
+                                                    <option value="North Riding of Yorkshire">North Riding of Yorkshire</option>
+                                                    <option value="North Yorkshire">North Yorkshire</option>
+                                                    <option value="Northamptonshire">Northamptonshire</option>
+                                                    <option value="Northumberland">Northumberland</option>
+                                                    <option value="Nottinghamshire">Nottinghamshire</option>
+                                                    <option value="Oxfordshire">Oxfordshire</option>
+                                                    <option value="Rutland">Rutland</option>
+                                                    <option value="Shropshire">Shropshire</option>
+                                                    <option value="Somerset">Somerset</option>
+                                                    <option value="South Yorkshire">South Yorkshire</option>
+                                                    <option value="Staffordshire">Staffordshire</option>
+                                                    <option value="Suffolk">Suffolk</option>
+                                                    <option value="Surrey">Surrey</option>
+                                                    <option value="Sussex">Sussex</option>
+                                                    <option value="Tyne and Wear">Tyne and Wear</option>
+                                                    <option value="Warwickshire">Warwickshire</option>
+                                                    <option value="West Midlands">West Midlands</option>
+                                                    <option value="West Riding of Yorkshire">West Riding of Yorkshire</option>
+                                                    <option value="West Sussex">West Sussex</option>
+                                                    <option value="West Yorkshire">West Yorkshire</option>
+                                                    <option value="Westmorland">Westmorland</option>
+                                                    <option value="Wiltshire">Wiltshire</option>
+                                                    <option value="Worcestershire">Worcestershire</option>
+                                                    <option value="Yorkshire">Yorkshire</option>
+                                                    <option disabled="">----------- Northern Ireland -----------</option>
+                                                    <option value="Co. Antrim">Co. Antrim</option>
+                                                    <option value="Co. Armagh">Co. Armagh</option>
+                                                    <option value="Co. Down">Co. Down</option>
+                                                    <option value="Co. Fermanagh">Co. Fermanagh</option>
+                                                    <option value="Co. Londonderry">Co. Londonderry</option>
+                                                    <option value="Co. Tyrone">Co. Tyrone</option>
+                                                    <option disabled="">----------- Scotland -----------</option>
+                                                    <option value="Aberdeenshire">Aberdeenshire</option>
+                                                    <option value="Angus">Angus</option>
+                                                    <option value="Argyllshire">Argyllshire</option>
+                                                    <option value="Ayrshire">Ayrshire</option>
+                                                    <option value="Banffshire">Banffshire</option>
+                                                    <option value="Berwickshire">Berwickshire</option>
+                                                    <option value="Borders">Borders</option>
+                                                    <option value="Bute">Bute</option>
+                                                    <option value="Caithness">Caithness</option>
+                                                    <option value="Central">Central</option>
+                                                    <option value="Clackmannanshire">Clackmannanshire</option>
+                                                    <option value="Dumfries and Galloway">Dumfries and Galloway</option>
+                                                    <option value="Dumfries-shire">Dumfries-shire</option>
+                                                    <option value="Dunbartonshire">Dunbartonshire</option>
+                                                    <option value="East Lothian">East Lothian</option>
+                                                    <option value="Fife">Fife</option>
+                                                    <option value="Grampian">Grampian</option>
+                                                    <option value="Highland">Highland</option>
+                                                    <option value="Inverness-shire">Inverness-shire</option>
+                                                    <option value="Kincardineshire">Kincardineshire</option>
+                                                    <option value="Kinross-shire">Kinross-shire</option>
+                                                    <option value="Kirkcudbrightshire">Kirkcudbrightshire</option>
+                                                    <option value="Lanarkshire">Lanarkshire</option>
+                                                    <option value="Lothian">Lothian</option>
+                                                    <option value="Midlothian">Midlothian</option>
+                                                    <option value="Morayshire">Morayshire</option>
+                                                    <option value="Nairn">Nairn</option>
+                                                    <option value="Orkney">Orkney</option>
+                                                    <option value="Perth">Perth</option>
+                                                    <option value="Renfrewshire">Renfrewshire</option>
+                                                    <option value="Ross and Cromarty">Ross and Cromarty</option>
+                                                    <option value="Roxburghshire">Roxburghshire</option>
+                                                    <option value="Selkirkshire">Selkirkshire</option>
+                                                    <option value="Shetland">Shetland</option>
+                                                    <option value="Stirlingshire">Stirlingshire</option>
+                                                    <option value="Strathclyde">Strathclyde</option>
+                                                    <option value="Sutherland">Sutherland</option>
+                                                    <option value="Tayside">Tayside</option>
+                                                    <option value="West Lothian">West Lothian</option>
+                                                    <option value="Western Isles">Western Isles</option>
+                                                    <option value="Wigtownshire">Wigtownshire</option>
+                                                    <option disabled="">----------- Wales -----------</option>
+                                                    <option value="Anglesey">Anglesey</option>
+                                                    <option value="Breconshire">Breconshire</option>
+                                                    <option value="Caernarvonshire">Caernarvonshire</option>
+                                                    <option value="Cardiganshire">Cardiganshire</option>
+                                                    <option value="Carmarthenshire">Carmarthenshire</option>
+                                                    <option value="Clwyd">Clwyd</option>
+                                                    <option value="Denbighshire">Denbighshire</option>
+                                                    <option value="Dyfed">Dyfed</option>
+                                                    <option value="Flintshire">Flintshire</option>
+                                                    <option value="Glamorgan">Glamorgan</option>
+                                                    <option value="Gwent">Gwent</option>
+                                                    <option value="Gwynedd">Gwynedd</option>
+                                                    <option value="Merionethshire">Merionethshire</option>
+                                                    <option value="Mid Glamorgan">Mid Glamorgan</option>
+                                                    <option value="Monmouthshire">Monmouthshire</option>
+                                                    <option value="Montgomeryshire">Montgomeryshire</option>
+                                                    <option value="Pembrokeshire">Pembrokeshire</option>
+                                                    <option value="Highland">Highland</option>
+                                                    <option value="Powys">Powys</option>
+                                                    <option value="Radnorshire">Radnorshire</option>
+                                                    <option value="South Glamorgan">South Glamorgan</option>
+                                                    <option value="West Glamorgan">West Glamorgan</option>
+                                                    <option disabled="">----------- South Africa -----------</option>
+                                                    <option value="Eastern Cape">Eastern Cape</option>
+                                                    <option value="Free State">Free State</option>
+                                                    <option value="Gauteng">Gauteng</option>
+                                                    <option value="KwaZulu-Natal">KwaZulu-Natal</option>
+                                                    <option value="Limpopo">Limpopo</option>
+                                                    <option value="Mpumalanga">Mpumalanga</option>
+                                                    <option value="Northern Cape">Northern Cape</option>
+                                                    <option value="North West">North West</option>
+                                                    <option value="Western Cape">Western Cape</option>
+                                                </select>
+                                                <span class="material-input"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="control-label">{{_ "landing.specialty1"}}</label>
+                                                <select name="doctor_specialty1" class="form-control">
+                                                    <option disabled="" selected=""></option>
+                                                    <option value="Cardiology">Cardiology</option>
+                                                    <option value="Dermatology">Dermatology</option>
+                                                    <option value="Endocrinology">Endocrinology</option>
+                                                    <option value="Family Medicine">Family Medicine</option>
+                                                    <option value="Internal Medicine">Internal Medicine</option>
+                                                    <option value="Neurology">Neurology</option>
+                                                    <option value="Oncology">Oncology</option>
+                                                    <option value="Pediatrics">Pediatrics</option>
+                                                    <option value="Pulmonology">Pulmonology</option>
+                                                    <option value="Rehabilitation Medicine">Rehabilitation Medicine</option>
+                                                    <option value="Sports Medicine - Orthopaedics">Sports Medicine - Orthopaedics</option>
+
+
+                                                    <!--
+                                                    <option value="Abdominal Surgery">Abdominal Surgery</option>
+                                                    <option value="Addiction Medicine">Addiction Medicine</option>
+                                                    <option value="Addiction Psychiatry">Addiction Psychiatry</option>
+                                                    <option value="Adolescent Medicine">Adolescent Medicine</option>
+                                                    <option value="Adult Orthopedic Surgery">Adult Orthopedic Surgery</option>
+                                                    <option value="Aerospace Medicine">Aerospace Medicine</option>
+                                                    <option value="Allergy">Allergy</option>
+                                                    <option value="Allergy &amp; Immunology">Allergy &amp; Immunology</option>
+                                                    <option value="Anatomic Pathology">Anatomic Pathology</option>
+                                                    <option value="Anatomic/Clinical Pathology">Anatomic/Clinical Pathology</option>
+                                                    <option value="Anesthesiology">Anesthesiology</option>
+                                                    <option value="Bariatrician">Bariatrician</option>
+                                                    <option value="Blood Banking">Blood Banking</option>
+                                                    <option value="Cardiac Electrophysiology">Cardiac Electrophysiology</option>
+                                                    <option value="Cardiovascular Disease">Cardiovascular Disease</option>
+                                                    <option value="Cardiovascular Surgery">Cardiovascular Surgery</option>
+                                                    <option value="Chemical Pathology">Chemical Pathology</option>
+                                                    <option value="Clinical Genetics">Clinical Genetics</option>
+                                                    <option value="Clinical Neurophysiology">Clinical Neurophysiology</option>
+                                                    <option value="Clinical Pathology">Clinical Pathology</option>
+                                                    <option value="Clinical Pharmacology">Clinical Pharmacology</option>
+                                                    <option value="Colon &amp; Rectal Surgery">Colon &amp; Rectal Surgery</option>
+                                                    <option value="Critical Care Anesthesiology">Critical Care Anesthesiology</option>
+                                                    <option value="Critical Care Medicine">Critical Care Medicine</option>
+                                                    <option value="Critical Care Surgery">Critical Care Surgery</option>
+                                                    <option value="Cytopathology">Cytopathology</option>
+                                                    <option value="Dental Endodontics">Dental Endodontics</option>
+                                                    <option value="DentalGeneral Practice">DentalGeneral Practice</option>
+                                                    <option value="Dental Oral &amp; Maxillofacial Surgery">Dental Oral &amp; Maxillofacial Surgery</option>
+                                                    <option value="Dental Oral Pathology">Dental Oral Pathology</option>
+                                                    <option value="Dental Orthodontics">Dental Orthodontics</option>
+                                                    <option value="Dental Pediatrics">Dental Pediatrics</option>
+                                                    <option value="Dental Periodontics">Dental Periodontics</option>
+                                                    <option value="Dental Prosthodontics">Dental Prosthodontics</option>
+                                                    <option value="Dental Public Health">Dental Public Health</option>
+                                                    <option value="Dermatologic Surgery">Dermatologic Surgery</option>
+                                                    <option value="Dermatology">Dermatology</option>
+                                                    <option value="Dermatopathology">Dermatopathology</option>
+                                                    <option value="Developmental Behavioral Pediatrics">Developmental Behavioral Pediatrics</option>
+                                                    <option value="Diabetes">Diabetes</option>
+                                                    <option value="Diagnostic Radiology">Diagnostic Radiology</option>
+                                                    <option value="Emergency Medicine">Emergency Medicine</option>
+                                                    <option value="Endocrinology">Endocrinology</option>
+                                                    <option value="Family Practice">Family Practice</option>
+                                                    <option value="Flexible">Flexible</option>
+                                                    <option value="Foot &amp; Ankle Orthopedics">Foot &amp; Ankle Orthopedics</option>
+                                                    <option value="Forensic Pathology">Forensic Pathology</option>
+                                                    <option value="Forensic Psychiatry">Forensic Psychiatry</option>
+                                                    <option value="Gastroenterology">Gastroenterology</option>
+                                                    <option value="General Practice">General Practice</option>
+                                                    <option value="General Preventive Medicine">General Preventive Medicine</option>
+                                                    <option value="General Surgery">General Surgery</option>
+                                                    <option value="Genetics">Genetics</option>
+                                                    <option value="Geriatric Psychiatry">Geriatric Psychiatry</option>
+                                                    <option value="Geriatrics">Geriatrics</option>
+                                                    <option value="Geriatrics Family Practice">Geriatrics Family Practice</option>
+                                                    <option value="Gynecological Oncology">Gynecological Oncology</option>
+                                                    <option value="Gynecology">Gynecology</option>
+                                                    <option value="Hand Surgery">Hand Surgery</option>
+                                                    <option value="Head &amp; Neck Surgery">Head &amp; Neck Surgery</option>
+                                                    <option value="Hematology">Hematology</option>
+                                                    <option value="Hematology Oncology">Hematology Oncology</option>
+                                                    <option value="Hepatology">Hepatology</option>
+                                                    <option value="Hospitalist">Hospitalist</option>
+                                                    <option value="Immunology">Immunology</option>
+                                                    <option value="Immunology, Diagnostic Laboratory">Immunology, Diagnostic Laboratory</option>
+                                                    <option value="Immunopathology">Immunopathology</option>
+                                                    <option value="Infectious Diseases">Infectious Diseases</option>
+                                                    <option value="Internal Medicine">Internal Medicine</option>
+                                                    <option value="Interventional Cardiology">Interventional Cardiology</option>
+                                                    <option value="Legal Medicine">Legal Medicine</option>
+                                                    <option value="Maternal &amp; Fetal Medicine">Maternal &amp; Fetal Medicine</option>
+                                                    <option value="Maxillofacial Surgery">Maxillofacial Surgery</option>
+                                                    <option value="Medical Microbiology">Medical Microbiology</option>
+                                                    <option value="Medical Oncology">Medical Oncology</option>
+                                                    <option value="Medical Toxicology">Medical Toxicology</option>
+                                                    <option value="Neonatal Perinatal Medicine">Neonatal Perinatal Medicine</option>
+                                                    <option value="Nephrology">Nephrology</option>
+                                                    <option value="Neuro Radiology">Neuro Radiology</option>
+                                                    <option value="Neurological Surgery">Neurological Surgery</option>
+                                                    <option value="Neurological Surgery, Critical Care">Neurological Surgery, Critical Care</option>
+                                                    <option value="Neurology">Neurology</option>
+                                                    <option value="Neuropathology">Neuropathology</option>
+                                                    <option value="Nuclear Medicine">Nuclear Medicine</option>
+                                                    <option value="Nuclear Radiology">Nuclear Radiology</option>
+                                                    <option value="Nutrition">Nutrition</option>
+                                                    <option value="Obstetrics">Obstetrics</option>
+                                                    <option value="Obstetrics &amp; Gynecology">Obstetrics &amp; Gynecology</option>
+                                                    <option value="Obstetrics &amp; Gynecology/Critical Care">Obstetrics &amp; Gynecology/Critical Care</option>
+                                                    <option value="Occupational Medicine">Occupational Medicine</option>
+                                                    <option value="Ophthalmology">Ophthalmology</option>
+                                                    <option value="Orthopedic Surgery">Orthopedic Surgery</option>
+                                                    <option value="Orthopedic Surgery Of The Spine">Orthopedic Surgery Of The Spine</option>
+                                                    <option value="Orthopedic Surgery, Sports Med">Orthopedic Surgery, Sports Med</option>
+                                                    <option value="Orthopedic Trauma Surgery">Orthopedic Trauma Surgery</option>
+                                                    <option value="Orthopedic, Musculoskeletal">Orthopedic, Musculoskeletal</option>
+                                                    <option value="Osteopathic Manipulative Medicine">Osteopathic Manipulative Medicine</option>
+                                                    <option value="Other Specialty">Other Specialty</option>
+                                                    <option value="Otology">Otology</option>
+                                                    <option value="Otorhinolaryngology">Otorhinolaryngology</option>
+                                                    <option value="Pain Management">Pain Management</option>
+                                                    <option value="Pain Medicine">Pain Medicine</option>
+                                                    <option value="Palliative Medicine">Palliative Medicine</option>
+                                                    <option value="Pathology">Pathology</option>
+                                                    <option value="Pathology, Hematology">Pathology, Hematology</option>
+                                                    <option value="Pediatric Allergy">Pediatric Allergy</option>
+                                                    <option value="Pediatric Anesthesiology">Pediatric Anesthesiology</option>
+                                                    <option value="Pediatric Cardiology">Pediatric Cardiology</option>
+                                                    <option value="Pediatric Critical Care">Pediatric Critical Care</option>
+                                                    <option value="Pediatric Emergency Medicine">Pediatric Emergency Medicine</option>
+                                                    <option value="Pediatric Endocrinology">Pediatric Endocrinology</option>
+                                                    <option value="Pediatric Gastroenterology">Pediatric Gastroenterology</option>
+                                                    <option value="Pediatric HematologyOncology">Pediatric HematologyOncology</option>
+                                                    <option value="Pediatric Infectious Diseases">Pediatric Infectious Diseases</option>
+                                                    <option value="Pediatric Internal Medicine">Pediatric Internal Medicine</option>
+                                                    <option value="Pediatric Nephrology">Pediatric Nephrology</option>
+                                                    <option value="Pediatric Neurology">Pediatric Neurology</option>
+                                                    <option value="Pediatric Ophthalmology">Pediatric Ophthalmology</option>
+                                                    <option value="Pediatric Orthopedic Surgery">Pediatric Orthopedic Surgery</option>
+                                                    <option value="Pediatric Otolaryngology">Pediatric Otolaryngology</option>
+                                                    <option value="Pediatric Pathology">Pediatric Pathology</option>
+                                                    <option value="Pediatric Psychiatry">Pediatric Psychiatry</option>
+                                                    <option value="Pediatric Pulmonology">Pediatric Pulmonology</option>
+                                                    <option value="Pediatric Radiology">Pediatric Radiology</option>
+                                                    <option value="Pediatric Rheumatology">Pediatric Rheumatology</option>
+                                                    <option value="Pediatric Sports Medicine">Pediatric Sports Medicine</option>
+                                                    <option value="Pediatric Surgery">Pediatric Surgery</option>
+                                                    <option value="Pediatric Urology">Pediatric Urology</option>
+                                                    <option value="Pediatrics">Pediatrics</option>
+                                                    <option value="Perinatal Medicine">Perinatal Medicine</option>
+                                                    <option value="Pharmaceutical Medicine">Pharmaceutical Medicine</option>
+                                                    <option value="Phlebology">Phlebology</option>
+                                                    <option value="Physical Medicine/Rehabilitation">Physical Medicine/Rehabilitation</option>
+                                                    <option value="Plastic Surgery">Plastic Surgery</option>
+                                                    <option value="Plastic Surgery, Hand Surgery">Plastic Surgery, Hand Surgery</option>
+                                                    <option value="Psychiatry">Psychiatry</option>
+                                                    <option value="Psychoanalysis">Psychoanalysis</option>
+                                                    <option value="Public Health">Public Health</option>
+                                                    <option value="Pulmonary Critical Care Medicine">Pulmonary Critical Care Medicine</option>
+                                                    <option value="Pulmonary Disease">Pulmonary Disease</option>
+                                                    <option value="Radiation Oncology">Radiation Oncology</option>
+                                                    <option value="Radioisotopic Pathology">Radioisotopic Pathology</option>
+                                                    <option value="Radiology">Radiology</option>
+                                                    <option value="Reproductive Endocrinology">Reproductive Endocrinology</option>
+                                                    <option value="Rheumatology">Rheumatology</option>
+                                                    <option value="Spinal Cord Injury">Spinal Cord Injury</option>
+                                                    <option value="Sports Medicine">Sports Medicine</option>
+                                                    <option value="Surgical Oncology">Surgical Oncology</option>
+                                                    <option value="Thoracic Surgery">Thoracic Surgery</option>
+                                                    <option value="Traumatic Surgery">Traumatic Surgery</option>
+                                                    <option value="Undersea Medicine">Undersea Medicine</option>
+                                                    <option value="Unspecified">Unspecified</option>
+                                                    <option value="Urgent Care">Urgent Care</option>
+                                                    <option value="Urological Surgery">Urological Surgery</option>
+                                                    <option value="Vascular Interventional Radiology">Vascular Interventional Radiology</option>
+                                                    <option value="Vascular Surgery">Vascular Surgery</option> -->
+                                                </select>
+                                                <span class="material-input"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="control-label">{{_ "landing.specialty2"}}</label>
+                                                <select name="doctor_specialty2" class="form-control">
+                                                    <option disabled="" selected=""></option>
+                                                    <option value="Cardiology">Cardiology</option>
+                                                    <option value="Dermatology">Dermatology</option>
+                                                    <option value="Endocrinology">Endocrinology</option>
+                                                    <option value="Family Medicine">Family Medicine</option>
+                                                    <option value="Internal Medicine">Internal Medicine</option>
+                                                    <option value="Neurology">Neurology</option>
+                                                    <option value="Oncology">Oncology</option>
+                                                    <option value="Pediatrics">Pediatrics</option>
+                                                    <option value="Pulmonology">Pulmonology</option>
+                                                    <option value="Rehabilitation Medicine">Rehabilitation Medicine</option>
+                                                    <option value="Sports Medicine - Orthopaedics">Sports Medicine - Orthopaedics</option>
+
+
+                                                    <!-- <option value="Abdominal Surgery">Abdominal Surgery</option>
+                                                    <option value="Addiction Medicine">Addiction Medicine</option>
+                                                    <option value="Addiction Psychiatry">Addiction Psychiatry</option>
+                                                    <option value="Adolescent Medicine">Adolescent Medicine</option>
+                                                    <option value="Adult Orthopedic Surgery">Adult Orthopedic Surgery</option>
+                                                    <option value="Aerospace Medicine">Aerospace Medicine</option>
+                                                    <option value="Allergy">Allergy</option>
+                                                    <option value="Allergy &amp; Immunology">Allergy &amp; Immunology</option>
+                                                    <option value="Anatomic Pathology">Anatomic Pathology</option>
+                                                    <option value="Anatomic/Clinical Pathology">Anatomic/Clinical Pathology</option>
+                                                    <option value="Anesthesiology">Anesthesiology</option>
+                                                    <option value="Bariatrician">Bariatrician</option>
+                                                    <option value="Blood Banking">Blood Banking</option>
+                                                    <option value="Cardiac Electrophysiology">Cardiac Electrophysiology</option>
+                                                    <option value="Cardiovascular Disease">Cardiovascular Disease</option>
+                                                    <option value="Cardiovascular Surgery">Cardiovascular Surgery</option>
+                                                    <option value="Chemical Pathology">Chemical Pathology</option>
+                                                    <option value="Clinical Genetics">Clinical Genetics</option>
+                                                    <option value="Clinical Neurophysiology">Clinical Neurophysiology</option>
+                                                    <option value="Clinical Pathology">Clinical Pathology</option>
+                                                    <option value="Clinical Pharmacology">Clinical Pharmacology</option>
+                                                    <option value="Colon &amp; Rectal Surgery">Colon &amp; Rectal Surgery</option>
+                                                    <option value="Critical Care Anesthesiology">Critical Care Anesthesiology</option>
+                                                    <option value="Critical Care Medicine">Critical Care Medicine</option>
+                                                    <option value="Critical Care Surgery">Critical Care Surgery</option>
+                                                    <option value="Cytopathology">Cytopathology</option>
+                                                    <option value="Dental Endodontics">Dental Endodontics</option>
+                                                    <option value="DentalGeneral Practice">DentalGeneral Practice</option>
+                                                    <option value="Dental Oral &amp; Maxillofacial Surgery">Dental Oral &amp; Maxillofacial Surgery</option>
+                                                    <option value="Dental Oral Pathology">Dental Oral Pathology</option>
+                                                    <option value="Dental Orthodontics">Dental Orthodontics</option>
+                                                    <option value="Dental Pediatrics">Dental Pediatrics</option>
+                                                    <option value="Dental Periodontics">Dental Periodontics</option>
+                                                    <option value="Dental Prosthodontics">Dental Prosthodontics</option>
+                                                    <option value="Dental Public Health">Dental Public Health</option>
+                                                    <option value="Dermatologic Surgery">Dermatologic Surgery</option>
+                                                    <option value="Dermatology">Dermatology</option>
+                                                    <option value="Dermatopathology">Dermatopathology</option>
+                                                    <option value="Developmental Behavioral Pediatrics">Developmental Behavioral Pediatrics</option>
+                                                    <option value="Diabetes">Diabetes</option>
+                                                    <option value="Diagnostic Radiology">Diagnostic Radiology</option>
+                                                    <option value="Emergency Medicine">Emergency Medicine</option>
+                                                    <option value="Endocrinology">Endocrinology</option>
+                                                    <option value="Family Practice">Family Practice</option>
+                                                    <option value="Flexible">Flexible</option>
+                                                    <option value="Foot &amp; Ankle Orthopedics">Foot &amp; Ankle Orthopedics</option>
+                                                    <option value="Forensic Pathology">Forensic Pathology</option>
+                                                    <option value="Forensic Psychiatry">Forensic Psychiatry</option>
+                                                    <option value="Gastroenterology">Gastroenterology</option>
+                                                    <option value="General Practice">General Practice</option>
+                                                    <option value="General Preventive Medicine">General Preventive Medicine</option>
+                                                    <option value="General Surgery">General Surgery</option>
+                                                    <option value="Genetics">Genetics</option>
+                                                    <option value="Geriatric Psychiatry">Geriatric Psychiatry</option>
+                                                    <option value="Geriatrics">Geriatrics</option>
+                                                    <option value="Geriatrics Family Practice">Geriatrics Family Practice</option>
+                                                    <option value="Gynecological Oncology">Gynecological Oncology</option>
+                                                    <option value="Gynecology">Gynecology</option>
+                                                    <option value="Hand Surgery">Hand Surgery</option>
+                                                    <option value="Head &amp; Neck Surgery">Head &amp; Neck Surgery</option>
+                                                    <option value="Hematology">Hematology</option>
+                                                    <option value="Hematology Oncology">Hematology Oncology</option>
+                                                    <option value="Hepatology">Hepatology</option>
+                                                    <option value="Hospitalist">Hospitalist</option>
+                                                    <option value="Immunology">Immunology</option>
+                                                    <option value="Immunology, Diagnostic Laboratory">Immunology, Diagnostic Laboratory</option>
+                                                    <option value="Immunopathology">Immunopathology</option>
+                                                    <option value="Infectious Diseases">Infectious Diseases</option>
+                                                    <option value="Internal Medicine">Internal Medicine</option>
+                                                    <option value="Interventional Cardiology">Interventional Cardiology</option>
+                                                    <option value="Legal Medicine">Legal Medicine</option>
+                                                    <option value="Maternal &amp; Fetal Medicine">Maternal &amp; Fetal Medicine</option>
+                                                    <option value="Maxillofacial Surgery">Maxillofacial Surgery</option>
+                                                    <option value="Medical Microbiology">Medical Microbiology</option>
+                                                    <option value="Medical Oncology">Medical Oncology</option>
+                                                    <option value="Medical Toxicology">Medical Toxicology</option>
+                                                    <option value="Neonatal Perinatal Medicine">Neonatal Perinatal Medicine</option>
+                                                    <option value="Nephrology">Nephrology</option>
+                                                    <option value="Neuro Radiology">Neuro Radiology</option>
+                                                    <option value="Neurological Surgery">Neurological Surgery</option>
+                                                    <option value="Neurological Surgery, Critical Care">Neurological Surgery, Critical Care</option>
+                                                    <option value="Neurology">Neurology</option>
+                                                    <option value="Neuropathology">Neuropathology</option>
+                                                    <option value="Nuclear Medicine">Nuclear Medicine</option>
+                                                    <option value="Nuclear Radiology">Nuclear Radiology</option>
+                                                    <option value="Nutrition">Nutrition</option>
+                                                    <option value="Obstetrics">Obstetrics</option>
+                                                    <option value="Obstetrics &amp; Gynecology">Obstetrics &amp; Gynecology</option>
+                                                    <option value="Obstetrics &amp; Gynecology/Critical Care">Obstetrics &amp; Gynecology/Critical Care</option>
+                                                    <option value="Occupational Medicine">Occupational Medicine</option>
+                                                    <option value="Ophthalmology">Ophthalmology</option>
+                                                    <option value="Orthopedic Surgery">Orthopedic Surgery</option>
+                                                    <option value="Orthopedic Surgery Of The Spine">Orthopedic Surgery Of The Spine</option>
+                                                    <option value="Orthopedic Surgery, Sports Med">Orthopedic Surgery, Sports Med</option>
+                                                    <option value="Orthopedic Trauma Surgery">Orthopedic Trauma Surgery</option>
+                                                    <option value="Orthopedic, Musculoskeletal">Orthopedic, Musculoskeletal</option>
+                                                    <option value="Osteopathic Manipulative Medicine">Osteopathic Manipulative Medicine</option>
+                                                    <option value="Other Specialty">Other Specialty</option>
+                                                    <option value="Otology">Otology</option>
+                                                    <option value="Otorhinolaryngology">Otorhinolaryngology</option>
+                                                    <option value="Pain Management">Pain Management</option>
+                                                    <option value="Pain Medicine">Pain Medicine</option>
+                                                    <option value="Palliative Medicine">Palliative Medicine</option>
+                                                    <option value="Pathology">Pathology</option>
+                                                    <option value="Pathology, Hematology">Pathology, Hematology</option>
+                                                    <option value="Pediatric Allergy">Pediatric Allergy</option>
+                                                    <option value="Pediatric Anesthesiology">Pediatric Anesthesiology</option>
+                                                    <option value="Pediatric Cardiology">Pediatric Cardiology</option>
+                                                    <option value="Pediatric Critical Care">Pediatric Critical Care</option>
+                                                    <option value="Pediatric Emergency Medicine">Pediatric Emergency Medicine</option>
+                                                    <option value="Pediatric Endocrinology">Pediatric Endocrinology</option>
+                                                    <option value="Pediatric Gastroenterology">Pediatric Gastroenterology</option>
+                                                    <option value="Pediatric HematologyOncology">Pediatric HematologyOncology</option>
+                                                    <option value="Pediatric Infectious Diseases">Pediatric Infectious Diseases</option>
+                                                    <option value="Pediatric Internal Medicine">Pediatric Internal Medicine</option>
+                                                    <option value="Pediatric Nephrology">Pediatric Nephrology</option>
+                                                    <option value="Pediatric Neurology">Pediatric Neurology</option>
+                                                    <option value="Pediatric Ophthalmology">Pediatric Ophthalmology</option>
+                                                    <option value="Pediatric Orthopedic Surgery">Pediatric Orthopedic Surgery</option>
+                                                    <option value="Pediatric Otolaryngology">Pediatric Otolaryngology</option>
+                                                    <option value="Pediatric Pathology">Pediatric Pathology</option>
+                                                    <option value="Pediatric Psychiatry">Pediatric Psychiatry</option>
+                                                    <option value="Pediatric Pulmonology">Pediatric Pulmonology</option>
+                                                    <option value="Pediatric Radiology">Pediatric Radiology</option>
+                                                    <option value="Pediatric Rheumatology">Pediatric Rheumatology</option>
+                                                    <option value="Pediatric Sports Medicine">Pediatric Sports Medicine</option>
+                                                    <option value="Pediatric Surgery">Pediatric Surgery</option>
+                                                    <option value="Pediatric Urology">Pediatric Urology</option>
+                                                    <option value="Pediatrics">Pediatrics</option>
+                                                    <option value="Perinatal Medicine">Perinatal Medicine</option>
+                                                    <option value="Pharmaceutical Medicine">Pharmaceutical Medicine</option>
+                                                    <option value="Phlebology">Phlebology</option>
+                                                    <option value="Physical Medicine/Rehabilitation">Physical Medicine/Rehabilitation</option>
+                                                    <option value="Plastic Surgery">Plastic Surgery</option>
+                                                    <option value="Plastic Surgery, Hand Surgery">Plastic Surgery, Hand Surgery</option>
+                                                    <option value="Psychiatry">Psychiatry</option>
+                                                    <option value="Psychoanalysis">Psychoanalysis</option>
+                                                    <option value="Public Health">Public Health</option>
+                                                    <option value="Pulmonary Critical Care Medicine">Pulmonary Critical Care Medicine</option>
+                                                    <option value="Pulmonary Disease">Pulmonary Disease</option>
+                                                    <option value="Radiation Oncology">Radiation Oncology</option>
+                                                    <option value="Radioisotopic Pathology">Radioisotopic Pathology</option>
+                                                    <option value="Radiology">Radiology</option>
+                                                    <option value="Reproductive Endocrinology">Reproductive Endocrinology</option>
+                                                    <option value="Rheumatology">Rheumatology</option>
+                                                    <option value="Spinal Cord Injury">Spinal Cord Injury</option>
+                                                    <option value="Sports Medicine">Sports Medicine</option>
+                                                    <option value="Surgical Oncology">Surgical Oncology</option>
+                                                    <option value="Thoracic Surgery">Thoracic Surgery</option>
+                                                    <option value="Traumatic Surgery">Traumatic Surgery</option>
+                                                    <option value="Undersea Medicine">Undersea Medicine</option>
+                                                    <option value="Unspecified">Unspecified</option>
+                                                    <option value="Urgent Care">Urgent Care</option>
+                                                    <option value="Urological Surgery">Urological Surgery</option>
+                                                    <option value="Vascular Interventional Radiology">Vascular Interventional Radiology</option>
+                                                    <option value="Vascular Surgery">Vascular Surgery</option> -->
+                                                </select>
+                                                <span class="material-input"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="control-label">{{_ "landing.specialty3"}}</label>
+                                                <select name="doctor_specialty3" class="form-control">
+                                                    <option disabled="" selected=""></option>
+                                                    <option value="Cardiology">Cardiology</option>
+                                                    <option value="Dermatology">Dermatology</option>
+                                                    <option value="Endocrinology">Endocrinology</option>
+                                                    <option value="Family Medicine">Family Medicine</option>
+                                                    <option value="Internal Medicine">Internal Medicine</option>
+                                                    <option value="Neurology">Neurology</option>
+                                                    <option value="Oncology">Oncology</option>
+                                                    <option value="Pediatrics">Pediatrics</option>
+                                                    <option value="Pulmonology">Pulmonology</option>
+                                                    <option value="Rehabilitation Medicine">Rehabilitation Medicine</option>
+                                                    <option value="Sports Medicine - Orthopaedics">Sports Medicine - Orthopaedics</option>
+
+
+                                                    <!-- <option value="Abdominal Surgery">Abdominal Surgery</option>
+                                                    <option value="Addiction Medicine">Addiction Medicine</option>
+                                                    <option value="Addiction Psychiatry">Addiction Psychiatry</option>
+                                                    <option value="Adolescent Medicine">Adolescent Medicine</option>
+                                                    <option value="Adult Orthopedic Surgery">Adult Orthopedic Surgery</option>
+                                                    <option value="Aerospace Medicine">Aerospace Medicine</option>
+                                                    <option value="Allergy">Allergy</option>
+                                                    <option value="Allergy &amp; Immunology">Allergy &amp; Immunology</option>
+                                                    <option value="Anatomic Pathology">Anatomic Pathology</option>
+                                                    <option value="Anatomic/Clinical Pathology">Anatomic/Clinical Pathology</option>
+                                                    <option value="Anesthesiology">Anesthesiology</option>
+                                                    <option value="Bariatrician">Bariatrician</option>
+                                                    <option value="Blood Banking">Blood Banking</option>
+                                                    <option value="Cardiac Electrophysiology">Cardiac Electrophysiology</option>
+                                                    <option value="Cardiovascular Disease">Cardiovascular Disease</option>
+                                                    <option value="Cardiovascular Surgery">Cardiovascular Surgery</option>
+                                                    <option value="Chemical Pathology">Chemical Pathology</option>
+                                                    <option value="Clinical Genetics">Clinical Genetics</option>
+                                                    <option value="Clinical Neurophysiology">Clinical Neurophysiology</option>
+                                                    <option value="Clinical Pathology">Clinical Pathology</option>
+                                                    <option value="Clinical Pharmacology">Clinical Pharmacology</option>
+                                                    <option value="Colon &amp; Rectal Surgery">Colon &amp; Rectal Surgery</option>
+                                                    <option value="Critical Care Anesthesiology">Critical Care Anesthesiology</option>
+                                                    <option value="Critical Care Medicine">Critical Care Medicine</option>
+                                                    <option value="Critical Care Surgery">Critical Care Surgery</option>
+                                                    <option value="Cytopathology">Cytopathology</option>
+                                                    <option value="Dental Endodontics">Dental Endodontics</option>
+                                                    <option value="DentalGeneral Practice">DentalGeneral Practice</option>
+                                                    <option value="Dental Oral &amp; Maxillofacial Surgery">Dental Oral &amp; Maxillofacial Surgery</option>
+                                                    <option value="Dental Oral Pathology">Dental Oral Pathology</option>
+                                                    <option value="Dental Orthodontics">Dental Orthodontics</option>
+                                                    <option value="Dental Pediatrics">Dental Pediatrics</option>
+                                                    <option value="Dental Periodontics">Dental Periodontics</option>
+                                                    <option value="Dental Prosthodontics">Dental Prosthodontics</option>
+                                                    <option value="Dental Public Health">Dental Public Health</option>
+                                                    <option value="Dermatologic Surgery">Dermatologic Surgery</option>
+                                                    <option value="Dermatology">Dermatology</option>
+                                                    <option value="Dermatopathology">Dermatopathology</option>
+                                                    <option value="Developmental Behavioral Pediatrics">Developmental Behavioral Pediatrics</option>
+                                                    <option value="Diabetes">Diabetes</option>
+                                                    <option value="Diagnostic Radiology">Diagnostic Radiology</option>
+                                                    <option value="Emergency Medicine">Emergency Medicine</option>
+                                                    <option value="Endocrinology">Endocrinology</option>
+                                                    <option value="Family Practice">Family Practice</option>
+                                                    <option value="Flexible">Flexible</option>
+                                                    <option value="Foot &amp; Ankle Orthopedics">Foot &amp; Ankle Orthopedics</option>
+                                                    <option value="Forensic Pathology">Forensic Pathology</option>
+                                                    <option value="Forensic Psychiatry">Forensic Psychiatry</option>
+                                                    <option value="Gastroenterology">Gastroenterology</option>
+                                                    <option value="General Practice">General Practice</option>
+                                                    <option value="General Preventive Medicine">General Preventive Medicine</option>
+                                                    <option value="General Surgery">General Surgery</option>
+                                                    <option value="Genetics">Genetics</option>
+                                                    <option value="Geriatric Psychiatry">Geriatric Psychiatry</option>
+                                                    <option value="Geriatrics">Geriatrics</option>
+                                                    <option value="Geriatrics Family Practice">Geriatrics Family Practice</option>
+                                                    <option value="Gynecological Oncology">Gynecological Oncology</option>
+                                                    <option value="Gynecology">Gynecology</option>
+                                                    <option value="Hand Surgery">Hand Surgery</option>
+                                                    <option value="Head &amp; Neck Surgery">Head &amp; Neck Surgery</option>
+                                                    <option value="Hematology">Hematology</option>
+                                                    <option value="Hematology Oncology">Hematology Oncology</option>
+                                                    <option value="Hepatology">Hepatology</option>
+                                                    <option value="Hospitalist">Hospitalist</option>
+                                                    <option value="Immunology">Immunology</option>
+                                                    <option value="Immunology, Diagnostic Laboratory">Immunology, Diagnostic Laboratory</option>
+                                                    <option value="Immunopathology">Immunopathology</option>
+                                                    <option value="Infectious Diseases">Infectious Diseases</option>
+                                                    <option value="Internal Medicine">Internal Medicine</option>
+                                                    <option value="Interventional Cardiology">Interventional Cardiology</option>
+                                                    <option value="Legal Medicine">Legal Medicine</option>
+                                                    <option value="Maternal &amp; Fetal Medicine">Maternal &amp; Fetal Medicine</option>
+                                                    <option value="Maxillofacial Surgery">Maxillofacial Surgery</option>
+                                                    <option value="Medical Microbiology">Medical Microbiology</option>
+                                                    <option value="Medical Oncology">Medical Oncology</option>
+                                                    <option value="Medical Toxicology">Medical Toxicology</option>
+                                                    <option value="Neonatal Perinatal Medicine">Neonatal Perinatal Medicine</option>
+                                                    <option value="Nephrology">Nephrology</option>
+                                                    <option value="Neuro Radiology">Neuro Radiology</option>
+                                                    <option value="Neurological Surgery">Neurological Surgery</option>
+                                                    <option value="Neurological Surgery, Critical Care">Neurological Surgery, Critical Care</option>
+                                                    <option value="Neurology">Neurology</option>
+                                                    <option value="Neuropathology">Neuropathology</option>
+                                                    <option value="Nuclear Medicine">Nuclear Medicine</option>
+                                                    <option value="Nuclear Radiology">Nuclear Radiology</option>
+                                                    <option value="Nutrition">Nutrition</option>
+                                                    <option value="Obstetrics">Obstetrics</option>
+                                                    <option value="Obstetrics &amp; Gynecology">Obstetrics &amp; Gynecology</option>
+                                                    <option value="Obstetrics &amp; Gynecology/Critical Care">Obstetrics &amp; Gynecology/Critical Care</option>
+                                                    <option value="Occupational Medicine">Occupational Medicine</option>
+                                                    <option value="Ophthalmology">Ophthalmology</option>
+                                                    <option value="Orthopedic Surgery">Orthopedic Surgery</option>
+                                                    <option value="Orthopedic Surgery Of The Spine">Orthopedic Surgery Of The Spine</option>
+                                                    <option value="Orthopedic Surgery, Sports Med">Orthopedic Surgery, Sports Med</option>
+                                                    <option value="Orthopedic Trauma Surgery">Orthopedic Trauma Surgery</option>
+                                                    <option value="Orthopedic, Musculoskeletal">Orthopedic, Musculoskeletal</option>
+                                                    <option value="Osteopathic Manipulative Medicine">Osteopathic Manipulative Medicine</option>
+                                                    <option value="Other Specialty">Other Specialty</option>
+                                                    <option value="Otology">Otology</option>
+                                                    <option value="Otorhinolaryngology">Otorhinolaryngology</option>
+                                                    <option value="Pain Management">Pain Management</option>
+                                                    <option value="Pain Medicine">Pain Medicine</option>
+                                                    <option value="Palliative Medicine">Palliative Medicine</option>
+                                                    <option value="Pathology">Pathology</option>
+                                                    <option value="Pathology, Hematology">Pathology, Hematology</option>
+                                                    <option value="Pediatric Allergy">Pediatric Allergy</option>
+                                                    <option value="Pediatric Anesthesiology">Pediatric Anesthesiology</option>
+                                                    <option value="Pediatric Cardiology">Pediatric Cardiology</option>
+                                                    <option value="Pediatric Critical Care">Pediatric Critical Care</option>
+                                                    <option value="Pediatric Emergency Medicine">Pediatric Emergency Medicine</option>
+                                                    <option value="Pediatric Endocrinology">Pediatric Endocrinology</option>
+                                                    <option value="Pediatric Gastroenterology">Pediatric Gastroenterology</option>
+                                                    <option value="Pediatric HematologyOncology">Pediatric HematologyOncology</option>
+                                                    <option value="Pediatric Infectious Diseases">Pediatric Infectious Diseases</option>
+                                                    <option value="Pediatric Internal Medicine">Pediatric Internal Medicine</option>
+                                                    <option value="Pediatric Nephrology">Pediatric Nephrology</option>
+                                                    <option value="Pediatric Neurology">Pediatric Neurology</option>
+                                                    <option value="Pediatric Ophthalmology">Pediatric Ophthalmology</option>
+                                                    <option value="Pediatric Orthopedic Surgery">Pediatric Orthopedic Surgery</option>
+                                                    <option value="Pediatric Otolaryngology">Pediatric Otolaryngology</option>
+                                                    <option value="Pediatric Pathology">Pediatric Pathology</option>
+                                                    <option value="Pediatric Psychiatry">Pediatric Psychiatry</option>
+                                                    <option value="Pediatric Pulmonology">Pediatric Pulmonology</option>
+                                                    <option value="Pediatric Radiology">Pediatric Radiology</option>
+                                                    <option value="Pediatric Rheumatology">Pediatric Rheumatology</option>
+                                                    <option value="Pediatric Sports Medicine">Pediatric Sports Medicine</option>
+                                                    <option value="Pediatric Surgery">Pediatric Surgery</option>
+                                                    <option value="Pediatric Urology">Pediatric Urology</option>
+                                                    <option value="Pediatrics">Pediatrics</option>
+                                                    <option value="Perinatal Medicine">Perinatal Medicine</option>
+                                                    <option value="Pharmaceutical Medicine">Pharmaceutical Medicine</option>
+                                                    <option value="Phlebology">Phlebology</option>
+                                                    <option value="Physical Medicine/Rehabilitation">Physical Medicine/Rehabilitation</option>
+                                                    <option value="Plastic Surgery">Plastic Surgery</option>
+                                                    <option value="Plastic Surgery, Hand Surgery">Plastic Surgery, Hand Surgery</option>
+                                                    <option value="Psychiatry">Psychiatry</option>
+                                                    <option value="Psychoanalysis">Psychoanalysis</option>
+                                                    <option value="Public Health">Public Health</option>
+                                                    <option value="Pulmonary Critical Care Medicine">Pulmonary Critical Care Medicine</option>
+                                                    <option value="Pulmonary Disease">Pulmonary Disease</option>
+                                                    <option value="Radiation Oncology">Radiation Oncology</option>
+                                                    <option value="Radioisotopic Pathology">Radioisotopic Pathology</option>
+                                                    <option value="Radiology">Radiology</option>
+                                                    <option value="Reproductive Endocrinology">Reproductive Endocrinology</option>
+                                                    <option value="Rheumatology">Rheumatology</option>
+                                                    <option value="Spinal Cord Injury">Spinal Cord Injury</option>
+                                                    <option value="Sports Medicine">Sports Medicine</option>
+                                                    <option value="Surgical Oncology">Surgical Oncology</option>
+                                                    <option value="Thoracic Surgery">Thoracic Surgery</option>
+                                                    <option value="Traumatic Surgery">Traumatic Surgery</option>
+                                                    <option value="Undersea Medicine">Undersea Medicine</option>
+                                                    <option value="Unspecified">Unspecified</option>
+                                                    <option value="Urgent Care">Urgent Care</option>
+                                                    <option value="Urological Surgery">Urological Surgery</option>
+                                                    <option value="Vascular Interventional Radiology">Vascular Interventional Radiology</option>
+                                                    <option value="Vascular Surgery">Vascular Surgery</option> -->
+                                                </select>
+                                                <span class="material-input"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="control-label">{{_ "landing.ifOther"}}</label>
+                                                <input name="doctor_other_speciality" type="text" class="form-control">
+                                                <span class="material-input"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="control-label">{{_ "landing.subSpecialty1"}}</label>
+                                                <input name="doctor_subspecialty1" type="text" class="form-control">
+                                                <span class="material-input"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="control-label">{{_ "landing.subSpecialty2"}}</label>
+                                                <input name="doctor_subspecialty2" type="text" class="form-control">
+                                                <span class="material-input"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="control-label">{{_ "landing.subSpecialty3"}}</label>
+                                                <input name="doctor_subspecialty3" type="text" class="form-control">
+                                                <span class="material-input"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="control-label">{{_ "landing.ifOther"}}</label>
+                                                <input name="doctor_other_subSpeciality" type="text" class="form-control">
+                                                <span class="material-input"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="control-label">{{_ "landing.timeToContact"}}</label>
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <input type="checkbox" name="time_to_contact" value="AM"> {{_ "landing.AM"}}
+                                                    </label>
+                                                    <label>
+                                                        <input type="checkbox" name="time_to_contact" value="PM"> {{_ "landing.PM"}}
+                                                    </label>
+                                                    <label>
+                                                        <input type="checkbox" name="time_to_contact" value="evening"> {{_ "landing.evening"}}
+                                                    </label>
+                                                    <label>
+                                                        <input type="checkbox" name="time_to_contact" value="weekend"> {{_ "landing.weekend"}}
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="control-label">{{_ "landing.ableToWork"}}</label>
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <input type="checkbox" name="able_to_work" value="day"> {{_ "landing.day"}}
+                                                    </label>
+                                                    <label>
+                                                        <input type="checkbox" name="able_to_work" value="AM"> {{_ "landing.AM"}}
+                                                    </label>
+                                                    <label>
+                                                        <input type="checkbox" name="able_to_work" value="PM"> {{_ "landing.PM"}}
+                                                    </label>
+                                                </div>
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <input type="checkbox" name="able_to_work" value="evenings"> {{_ "landing.evenings"}}
+                                                    </label>
+                                                    <label>
+                                                        <input type="checkbox" name="able_to_work" value="nights"> {{_ "landing.nights"}}
+                                                    </label>
+                                                    <label>
+                                                        <input type="checkbox" name="able_to_work" value="weekends"> {{_ "landing.weekends"}}
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="control-label">{{_ "landing.residency"}}</label>
+                                                <input name="doctor_residency" type="text" class="form-control">
+                                                <span class="material-input"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="control-label">{{_ "landing.fellowship"}}</label>
+                                                <input name="doctor_fellowship" type="text" class="form-control">
+                                                <span class="material-input"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="control-label">{{_ "landing.awards"}}</label>
+                                            <div class="form-group">
+                                                <textarea name="doctor_awards" type="text" class="form-control"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="control-label">{{_ "landing.comments"}}</label>
+                                            <div class="form-group">
+                                                <textarea name="doctor_comments" type="text" class="form-control"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="control-label">{{_ "ui.profile.address"}}</label>
+                                                <input type="text" id="profile_address" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group is-empty">
+                                                <label class="control-label">{{_ "ui.profile.country"}}</label>
+                                                <select id="profile_country" class="form-control">
+                                                    <option value="Canada"> Canada </option>
+                                                    <option value="Nigeria"> Nigeria </option>
+                                                    <option value="USA"> United States </option>
+                                                    <option value="...">...</option>
+                                                </select>
+                                                <span class="material-input"></span>
+                                            </div>
+                                        </div>
+                                        <div class = "col-md-4">
+                                            <div class="form-group is-empty">
+                                                <label class="control-label">{{_ "ui.profile.state"}}</label>
+                                                <select id="profile_province" class="form-control">
+                                                    <option value="British Columbia"> British Columbia </option>
+                                                    <option value="Ontario"> Ontario </option>
+                                                    <option value="Quebec"> Quebec </option>
+                                                    <option value="Alberta"> Alberta </option>
+                                                    <option value="Manitoba"> Manitoba </option>
+                                                    <option value="Saskatchewan"> Saskatchewan </option>
+                                                    <option value="Nova Scotia"> Nova Scotia </option>
+                                                    <option value="New Brunswick"> New Brunswick </option>
+                                                    <option value="Newfoundland and Labrador"> Newfoundland and Labrador </option>
+                                                    <option value="Prince Edward Island"> Prince Edward Island </option>
+                                                    <option value="Northwest Territories"> Northwest Territories </option>
+                                                    <option value="Yukon"> Yukon </option>
+                                                    <option value="Nunavut"> Nunavut </option>
+                                                </select>
+                                                <span class="material-input"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group is-empty">
+                                                <label class="control-label">{{_ "ui.profile.city"}}</label>
+                                                <select id="profile_city" class="form-control">
+                                                    <option value="Richmond"> Richmond </option>
+                                                    <option value="Vancouver"> Vancouver </option>
+                                                </select>
+                                                <span class="material-input"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="control-label">{{_ "ui.profile.post"}}</label>
+                                                <input type="text" id="profile_postcode" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group is-empty">
+                                                <label class="control-label">{{_ "ui.profile.specialty"}}</label>
+                                                <input type="text" id="profile_specialty" class="form-control" disabled>
+                                                <span class="material-input"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group is-empty">
+                                                <label class="control-label">{{_ "ui.profile.subSpecialty"}}</label>
+                                                <input type="text" id="profile_subspecialty" class="form-control" disabled>
+                                                <span class="material-input"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="control-label">{{_ "ui.profile.about"}}</label>
+                                                <div class="form-group">
+                                                    <textarea class="form-control" id="profile_aboutme" rows="5"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div-->
+
+                                    {{else}}
+                                        {{#if isInRole 'patient'}}
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label">{{_ "ui.profile.firstName"}}</label>
+                                                    <input type="text" id="profile_patient_firstname" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label">{{_ "ui.profile.lastName"}}</label>
+                                                    <input type="text" id="profile_patient_lastname" class="form-control">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            {{#if isDesktop}}
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label">{{_ "ui.profile.birthDate"}}</label>
+                                                    <input type="input" id="profile_patient_birthdate" class="form-control datepicker">
+                                                </div>
+                                            </div>
+                                            {{/if}}
+                                            {{#if isTablet}}
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label">{{_ "ui.profile.birthDate"}}</label>
+                                                    <input type="date" name="date" id="profile_patient_birthdate" class="form-control">
+                                                </div>
+                                            </div>
+                                            {{/if}}
+                                            {{#if isPhone}}
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label class="control-label">{{_ "ui.profile.birthDate"}}</label>
+                                                        <input type="date" name="date" id="profile_patient_birthdate" class="form-control">
+                                                    </div>
+                                                </div>
+                                            {{/if}}
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label">{{_ "ui.profile.sex"}}</label>
+                                                    <select id="profile_patient_gender" class="form-control">
+                                                        <option value="male"> {{_ "ui.profile.male"}} </option>
+                                                        <option value="Female"> {{_ "ui.profile.female"}} </option>
+                                                    </select>
+                                                    <span class="material-input"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label">{{_ "ui.profile.phone"}}</label>
+                                                    <input type="tel" name="tel" id="profile_patient_phone" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label">{{_ "ui.profile.email"}}</label>
+                                                    <input type="email" name="email" id="profile_patient_email" class="form-control">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label class="control-label">{{_ "ui.profile.height"}}</label>
+                                                    <input type="number" name="number" id="profile_patient_height" class="form-control" placeholder="cm">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group is-empty">
+                                                    <label class="control-label">{{_ "ui.profile.weight"}}</label>
+                                                    <input type="number" name="number" id="profile_patient_weight" class="form-control" placeholder="kg">
+                                                    <span class="material-input"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group is-empty">
+                                                    <label class="control-label">{{_ "ui.profile.bt"}}</label>
+                                                    <input type="text" name="text" id="profile_patient_blood" class="form-control">
+                                                    <span class="material-input"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label">{{_ "ui.profile.allergy"}}</label>
+                                                    <div class="form-group">
+                                                        <textarea class="form-control" id="profile_patient_allergy" rows="5"></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label">{{_ "ui.profile.history"}}</label>
+                                                    <div class="form-group">
+                                                        <textarea class="form-control" id="profile_patient_fhistory" rows="5"></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        {{else}}
+                                            {{#if isInRole 'admin'}}
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label class="control-label">{{_ "ui.profile.password"}}</label>
+                                                        <input type="password" name="psw" id="admin_password" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label class="control-label">{{_ "ui.profile.rePassword"}}</label>
+                                                        <input type="password" name="psw" id="admin_password_verify" class="form-control">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {{/if}}
+                                            {{#if isInRole 'healthOrgAdmin'}}
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label class="control-label">{{_ "ui.profile.password"}}</label>
+                                                        <input type="password" name="psw" id="admin_password" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label class="control-label">{{_ "ui.profile.rePassword"}}</label>
+                                                        <input type="password" name="psw" id="admin_password_verify" class="form-control">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {{/if}}
+                                            {{#if isInRole 'employerAdmin'}}
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label class="control-label">{{_ "ui.profile.password"}}</label>
+                                                        <input type="password" name="psw" id="admin_password" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label class="control-label">{{_ "ui.profile.rePassword"}}</label>
+                                                        <input type="password" name="psw" id="admin_password_verify" class="form-control">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {{/if}}
+                                        {{/if}}
+                                    {{/if}}
+                                    <div class="clearfix"></div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{> footer}}
+    </div>
+</template>

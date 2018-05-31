@@ -1,0 +1,82 @@
+<template name="dailySchedule">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header card-header-icon" data-background-color="green">
+                    <i class="material-icons">today</i>
+                </div>
+                <div class="card-content">
+                    <h4 class="card-title">{{_ "ui.dailySchedule.title"}}</h4>
+
+                    <!--button type="button" id="demo_start" rel="tooltip" class="btn btn-success" >
+                        <i class="material-icons">call</i>
+                        <span>Start Demo</span>
+                    </button-->
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="table-responsive no-more-tables">
+                                <table class="table">
+                                    <tbody>
+                                    {{#each sessions}}
+                                        <tr>
+                                        {{#if isInRole 'doctor'}}
+                                            <td>
+                                                <div class="avatar_mini">
+                                                    <img src="{{sender.avatar}}">
+                                                </div>
+                                            </td>
+                                            <td >
+                                                {{sender.firstname}} {{sender.lastname}}
+                                            </td>
+                                            <td >
+                                                {{type}}
+                                            </td>
+                                        {{else}}
+                                            <td>
+                                                <div class="avatar_mini">
+                                                    <img src="{{doctor.avatar}}">
+                                                </div>
+                                            </td>
+                                            <td >
+                                                {{doctor.firstname}} {{doctor.lastname}}
+                                            </td>
+                                            <td >
+                                                {{doctor.subspecialty}}
+                                            </td>
+                                        {{/if}}
+                                            
+                                            <td>{{date}}</td>
+                                            <td >
+                                                {{start}} - {{end}}
+                                            </td>
+
+                                            <!--{{#if isReady}}-->
+                                            <td class="text-right">
+                                                <button type="button" id="session_start" rel="tooltip" class="btn btn-success" >
+                                                    <i class="material-icons">call</i>
+                                                    <span>{{_ "ui.dailySchedule.start"}}</span>
+                                                </button>
+                                            </td>
+                                            <!--{{else}}
+                                           <td class="text-right">
+                                                <button type="button" rel="tooltip" class="btn btn-default btn-simple" disabled="disabled">
+                                                    <i class="material-icons">call</i>
+                                                    <span>Start</span>
+                                                </button>
+                                            </td>
+                                            {{/if}}
+                                            -->
+                                        
+                                        </tr>
+                                        {{/each}}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

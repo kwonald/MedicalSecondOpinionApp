@@ -1,0 +1,145 @@
+<template name="history">
+    {{> sidebar}}
+    <div class="main-panel">
+        {{> navbar}}
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-content">
+                                <div class="material-datatables no-more-tables">
+                                    <table class="table" id="">
+                                        <thead>
+                                            <tr>
+                                                <th class="disabled-sorting"></th>
+                                                <th>{{_ "ui.history.name"}}</th>
+                                                <th>{{_ "ui.history.type"}}</th>
+                                                <th>{{_ "ui.history.date"}}</th>
+                                                <th>{{_ "ui.history.time"}}</th>
+                                                <th class="disabled-sorting text-right">{{_ "ui.history.actions"}}</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        {{#each receive_history}}
+                                            <tr>
+                                                <td>
+                                                    <div class="avatar_mini">
+                                                        <img src="{{sender.avatar}}">
+                                                    </div>
+                                                </td>
+                                                <td>{{sender.firstname}} {{sender.lastname}}</td>
+                                                <td>{{type}}</td>
+                                                <td>{{date}}</td>
+                                                <td>{{start}} - {{end}}</td>
+                                                <td class="td-actions text-right">
+                                                {{#if isDeclined}}
+                                                  <td>Declined</td>
+                                                {{else}}
+                                                   <button type="button" rel="tooltip" class="btn btn-lg btn-info" data-toggle="modal" data-target="#receipt">
+                                                        <i class="material-icons">receipt</i>
+                                                        <span>Receipt</span>
+                                                    </button>
+                                                {{/if}}
+                                                </td>
+                                            </tr>
+                                        {{/each}}
+                                        </tbody>
+
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{> footer}}
+    </div>
+
+    <!-- Modal Receipt -->
+    <div class="modal fade" id="receipt" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h5 class="modal-title" id="exampleModalLongTitle">{{_ "ui.history.receipt"}}</h5>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-xs-6 col-sm-6 col-md-6">
+                            <address>
+                                <strong>Emily Erenes</strong>
+                                <br>
+                                2135 Sunset Blvd
+                                <br>
+                                Los Angeles, CA 90026
+                                <br>
+                                <abbr title="Phone">P:</abbr> (213) 484-6829
+                            </address>
+                        </div>
+                        <div class="col-xs-6 col-sm-6 col-md-6 text-right">
+                            <p>Date: 8 January, 2017</p>
+                            <p>Receipt #: 34522677W</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="text-center">
+                                <h2>{{_ "ui.history.receipt"}}</h2>
+                            </div>
+                            <table class="table table-hover table-nowrap">
+                                <thead>
+                                <tr>
+                                    <th>{{_ "ui.history.item"}}</th>
+                                    <th>{{_ "ui.history.duration"}}</th>
+                                    <th class="text-center">{{_ "ui.history.price"}}</th>
+                                    <th class="text-center">{{_ "ui.history.total"}}</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td class="col-md-9">Consultiing Session</td>
+                                    <td class="col-md-1" style="text-align: center"> 1 Hour </td>
+                                    <td class="col-md-1 text-center">$50</td>
+                                    <td class="col-md-1 text-center">$50</td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td class="text-right">
+                                        <p>
+                                            <strong>{{_ "ui.history.subtotal"}}:</strong>
+                                        </p>
+                                        <p>
+                                            <strong>{{_ "ui.history.tax"}}: </strong>
+                                        </p></td>
+                                    <td class="text-center">
+                                        <p>
+                                            <strong>$50</strong>
+                                        </p>
+                                        <p>
+                                            <strong>$0</strong>
+                                        </p></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td class="text-right"><h4><strong>{{_ "ui.history.total"}}: </strong></h4></td>
+                                    <td class="text-center text-danger"><h4><strong>$50</strong></h4></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-black" data-dismiss="modal">{{_ "ui.history.close"}}</button>
+                    <button type="button" class="btn btn-info">{{_ "ui.history.print"}}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

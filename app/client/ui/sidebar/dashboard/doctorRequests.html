@@ -1,0 +1,462 @@
+<template name="doctorRequests">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header card-header-icon" data-background-color="rose">
+                    <i class="material-icons">new_releases</i>
+                </div>
+                <div class="card-content">
+                    <h4 class="card-title">{{_ "ui.doctorRequests.title"}}</h4>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="material-datatables no-more-tables">
+                                <table class="table" id="datatables">
+                                    <tbody>
+                                    {{#each onholds}}
+                                        <tr>
+                                            <td>
+                                                <div class="avatar_mini">
+                                                    <img src="{{avatar}}">
+                                                </div>
+                                            </td>
+                                            <td class="text-left">
+                                                {{contact_name}}
+                                            </td>
+                                            <td>{{subspecialty}}</td>
+                                            <td>
+                                                {{residency}}
+                                            </td>
+                                            <td class="text-right">
+                                                <button type="button" id="demo_start" rel="tooltip" class="btn btn-success" >
+                                                    <i class="material-icons">call</i>
+                                                    <span>{{_ "ui.dailySchedule.start"}}</span>
+                                                </button>
+                                                <button type="button" rel="tooltip" class="btn btn-rose btn-simple certificates">
+                                                    <i class="material-icons">school</i>
+                                                    <span> {{_ "ui.doctorRequests.certificates"}} </span>
+                                                </button>
+                                                <button type="button" rel="tooltip" class="btn btn-info btn-simple">
+                                                    <i class="material-icons">perm_contact_calendar</i>
+                                                    <span> {{_ "ui.doctorRequests.contact"}} </span>
+                                                </button>
+                                                <button type="button" id="approve_request" rel="tooltip" class="btn btn-black">
+                                                    <i class="material-icons">check</i>
+                                                    <span> {{_ "ui.doctorRequests.approve"}} </span>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        {{/each}}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="pswp__bg"></div>
+                <div class="pswp__scroll-wrap">
+                    <div class="pswp__container">
+                        <div class="pswp__item"></div>
+                        <div class="pswp__item"></div>
+                        <div class="pswp__item"></div>
+                    </div>
+
+                    <div class="pswp__ui pswp__ui--hidden">
+                        <div class="pswp__top-bar">
+                            <div class="pswp__counter"></div>
+                            <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                            <button class="pswp__button pswp__button--share" title="Share"></button>
+                            <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                            <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                            <div class="pswp__preloader">
+                                <div class="pswp__preloader__icn">
+                                    <div class="pswp__preloader__cut">
+                                        <div class="pswp__preloader__donut"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                            <div class="pswp__share-tooltip"></div>
+                        </div>
+
+                        <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+                        </button>
+                        <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+                        </button>
+
+                        <div class="pswp__caption">
+                            <div class="pswp__caption__center"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header card-header-icon" data-background-color="green">
+                    <i class="material-icons">verified_user</i>
+                </div>
+                <div class="card-content">
+                    <h4 class="card-title">{{_ "ui.doctorRequests.title2"}}</h4>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="material-datatables no-more-tables">
+                                <table class="table" id="datatables">
+                                    <tbody>
+                                    {{#each approved}}
+                                    <tr>
+                                        <td>
+                                            <div class="avatar_mini">
+                                                <img src="{{avatar}}">
+                                            </div>
+                                        </td>
+                                        <td class="text-left">
+                                            {{contact_name}}
+                                        </td>
+                                        <td>{{subspecialty}}</td>
+                                        <td>
+                                            {{country}}
+                                        </td>
+                                        <td class="text-right">
+                                            <button type="button" id="demo_start" rel="tooltip" class="btn btn-success" >
+                                                <i class="material-icons">call</i>
+                                                <span>{{_ "ui.dailySchedule.start"}}</span>
+                                            </button>
+                                            <button type="button" rel="tooltip" class="btn btn-rose btn-simple certificates">
+                                                <i class="material-icons">school</i>
+                                                <span> {{_ "ui.doctorRequests.certificates2"}} </span>
+                                            </button>
+                                            <button type="button" rel="tooltip" class="btn btn-info btn-simple">
+                                                <i class="material-icons">perm_contact_calendar</i>
+                                                <span> {{_ "ui.doctorRequests.contact2"}} </span>
+                                            </button>
+                                            <button type="button" id="remove_doctor" rel="tooltip" class="btn btn-danger">
+                                                <i class="material-icons">close</i>
+                                                <span> {{_ "ui.doctorRequests.remove"}} </span>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    {{/each}}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="pswp__bg"></div>
+                <div class="pswp__scroll-wrap">
+                    <div class="pswp__container">
+                        <div class="pswp__item"></div>
+                        <div class="pswp__item"></div>
+                        <div class="pswp__item"></div>
+                    </div>
+                    <div class="pswp__ui pswp__ui--hidden">
+                        <div class="pswp__top-bar">
+                            <div class="pswp__counter"></div>
+                            <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                            <button class="pswp__button pswp__button--share" title="Share"></button>
+                            <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                            <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                            <div class="pswp__preloader">
+                                <div class="pswp__preloader__icn">
+                                    <div class="pswp__preloader__cut">
+                                        <div class="pswp__preloader__donut"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                            <div class="pswp__share-tooltip"></div>
+                        </div>
+                        <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+                        <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+                        <div class="pswp__caption">
+                            <div class="pswp__caption__center"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header card-header-icon" data-background-color="green">
+                    <i class="material-icons">verified_user</i>
+                </div>
+                <div class="card-content">
+                    <h4 class="card-title"> Patients </h4>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="material-datatables no-more-tables">
+                                <table class="table" id="datatables">
+                                    <tbody>
+                                    {{#each list_patients}}
+                                    <tr>
+                                        <td>
+                                            <div class="avatar_mini">
+                                                <img src="{{avatar}}">
+                                            </div>
+                                        </td>
+                                        <td class="text-left">
+                                            {{_id}}
+                                        </td>
+                                        
+                                        <td>{{emails}}</td>
+                                        
+                                        <td>
+                                            {{avatar}}
+                                        </td>
+                                        <td class="text-right">
+                                            <!-- <button type="button" rel="tooltip" class="btn btn-rose btn-simple certificates">
+                                                <i class="material-icons">school</i>
+                                                <span> {{_ "ui.doctorRequests.certificates2"}} </span>
+                                            </button>
+                                            <button type="button" rel="tooltip" class="btn btn-info btn-simple">
+                                                <i class="material-icons">perm_contact_calendar</i>
+                                                <span> {{_ "ui.doctorRequests.contact2"}} </span>
+                                            </button> -->
+                                            <button type="button" id="demo_start" rel="tooltip" class="btn btn-success" >
+                                                <i class="material-icons">call</i>
+                                                <span>{{_ "ui.dailySchedule.start"}}</span>
+                                            </button>
+                                            <button type="button" id="remove_patient" rel="tooltip" class="btn btn-danger">
+                                                <i class="material-icons">close</i>
+                                                <span> {{_ "ui.doctorRequests.remove"}} </span>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    {{/each}}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="pswp__bg"></div>
+                <div class="pswp__scroll-wrap">
+                    <div class="pswp__container">
+                        <div class="pswp__item"></div>
+                        <div class="pswp__item"></div>
+                        <div class="pswp__item"></div>
+                    </div>
+                    <div class="pswp__ui pswp__ui--hidden">
+                        <div class="pswp__top-bar">
+                            <div class="pswp__counter"></div>
+                            <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                            <button class="pswp__button pswp__button--share" title="Share"></button>
+                            <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                            <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                            <div class="pswp__preloader">
+                                <div class="pswp__preloader__icn">
+                                    <div class="pswp__preloader__cut">
+                                        <div class="pswp__preloader__donut"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                            <div class="pswp__share-tooltip"></div>
+                        </div>
+                        <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+                        <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+                        <div class="pswp__caption">
+                            <div class="pswp__caption__center"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header card-header-icon" data-background-color="green">
+                    <i class="material-icons">verified_user</i>
+                </div>
+                <div class="card-content">
+                    <h4 class="card-title"> Employers </h4>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="material-datatables no-more-tables">
+                                <table class="table" id="datatables">
+                                    <tbody>
+                                    {{#each list_employers}}
+                                    <tr>
+                                        <td>
+                                            <div class="avatar_mini">
+                                                <img src="{{avatar}}">
+                                            </div>
+                                        </td>
+                                        <td class="text-left">
+                                            {{_id}}
+                                        </td>
+                                        
+                                        <td>{{emails}}</td>
+                                        
+                                        <td>
+                                            {{avatar}}
+                                        </td>
+                                        <td class="text-right">
+                                            <!-- <button type="button" rel="tooltip" class="btn btn-rose btn-simple certificates">
+                                                <i class="material-icons">school</i>
+                                                <span> {{_ "ui.doctorRequests.certificates2"}} </span>
+                                            </button>
+                                            <button type="button" rel="tooltip" class="btn btn-info btn-simple">
+                                                <i class="material-icons">perm_contact_calendar</i>
+                                                <span> {{_ "ui.doctorRequests.contact2"}} </span>
+                                            </button> -->
+                                            <button type="button" id="demo_start" rel="tooltip" class="btn btn-success" >
+                                                <i class="material-icons">call</i>
+                                                <span>{{_ "ui.dailySchedule.start"}}</span>
+                                            </button>
+                                            <button type="button" id="remove_patient" rel="tooltip" class="btn btn-danger">
+                                                <i class="material-icons">close</i>
+                                                <span> {{_ "ui.doctorRequests.remove"}} </span>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    {{/each}}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="pswp__bg"></div>
+                <div class="pswp__scroll-wrap">
+                    <div class="pswp__container">
+                        <div class="pswp__item"></div>
+                        <div class="pswp__item"></div>
+                        <div class="pswp__item"></div>
+                    </div>
+                    <div class="pswp__ui pswp__ui--hidden">
+                        <div class="pswp__top-bar">
+                            <div class="pswp__counter"></div>
+                            <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                            <button class="pswp__button pswp__button--share" title="Share"></button>
+                            <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                            <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                            <div class="pswp__preloader">
+                                <div class="pswp__preloader__icn">
+                                    <div class="pswp__preloader__cut">
+                                        <div class="pswp__preloader__donut"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                            <div class="pswp__share-tooltip"></div>
+                        </div>
+                        <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+                        <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+                        <div class="pswp__caption">
+                            <div class="pswp__caption__center"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header card-header-icon" data-background-color="green">
+                    <i class="material-icons">verified_user</i>
+                </div>
+                <div class="card-content">
+                    <h4 class="card-title"> Health Organizations </h4>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="material-datatables no-more-tables">
+                                <table class="table" id="datatables">
+                                    <tbody>
+                                    {{#each list_organizations}}
+                                    <tr>
+                                        <td>
+                                            <div class="avatar_mini">
+                                                <img src="{{avatar}}">
+                                            </div>
+                                        </td>
+                                        <td class="text-left">
+                                            {{_id}}
+                                        </td>
+                                        
+                                        <td>{{emails}}</td>
+                                        
+                                        <td>
+                                            {{avatar}}
+                                        </td>
+                                        <td class="text-right">
+                                            <!-- <button type="button" rel="tooltip" class="btn btn-rose btn-simple certificates">
+                                                <i class="material-icons">school</i>
+                                                <span> {{_ "ui.doctorRequests.certificates2"}} </span>
+                                            </button>
+                                            <button type="button" rel="tooltip" class="btn btn-info btn-simple">
+                                                <i class="material-icons">perm_contact_calendar</i>
+                                                <span> {{_ "ui.doctorRequests.contact2"}} </span>
+                                            </button> -->
+                                            <button type="button" id="demo_start" rel="tooltip" class="btn btn-success" >
+                                                <i class="material-icons">call</i>
+                                                <span>{{_ "ui.dailySchedule.start"}}</span>
+                                            </button>
+                                            <button type="button" id="remove_patient" rel="tooltip" class="btn btn-danger">
+                                                <i class="material-icons">close</i>
+                                                <span> {{_ "ui.doctorRequests.remove"}} </span>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    {{/each}}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="pswp__bg"></div>
+                <div class="pswp__scroll-wrap">
+                    <div class="pswp__container">
+                        <div class="pswp__item"></div>
+                        <div class="pswp__item"></div>
+                        <div class="pswp__item"></div>
+                    </div>
+                    <div class="pswp__ui pswp__ui--hidden">
+                        <div class="pswp__top-bar">
+                            <div class="pswp__counter"></div>
+                            <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                            <button class="pswp__button pswp__button--share" title="Share"></button>
+                            <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                            <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                            <div class="pswp__preloader">
+                                <div class="pswp__preloader__icn">
+                                    <div class="pswp__preloader__cut">
+                                        <div class="pswp__preloader__donut"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                            <div class="pswp__share-tooltip"></div>
+                        </div>
+                        <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+                        <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+                        <div class="pswp__caption">
+                            <div class="pswp__caption__center"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+</template>

@@ -1,0 +1,199 @@
+<template name="snapshot">
+    {{#if isInRole 'doctor'}}
+        <!-- DOCTOR's DASHBOARD -->
+        <div class="row">
+            <div class="col-lg-3 col-md-6 col-sm-6 hidden-xs">
+                <div class="card card-stats">
+                    <div class="card-header" data-background-color="blue">
+                        <i class="fa fa-paypal" aria-hidden="true"></i>
+                    </div>
+                    <div class="card-content">
+                        <p class="category">My Account</p>
+                        <h3 class="card-title">{{find_paypal_email}}</h3>
+                    </div>
+                    <div class="card-footer">
+                        <div class="stats">
+                            <i class="material-icons">build</i>
+                            <a class="btn btn-simple" data-toggle="modal" id="set_paypal_account_button" data-target="#paypal_account_modal_id">
+                              Update Email
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6 hidden-xs">
+                <div class="card card-stats">
+                    <div class="card-header" data-background-color="orange">
+                        <i class="material-icons">assessment</i>
+                    </div>
+                    <div class="card-content">
+                        <p class="category">Report Requests</p>
+                        <!-- TODO: change the 0 to display approved/received reports -->
+                        <h3 class="card-title">0</h3>
+                        <!-- END TODO -->
+                    </div>
+                    <div class="card-footer">
+                        <div class="stats">
+                            <i class="material-icons">add</i>
+                            <a class="btn btn-simple" href="#">Create</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6 hidden-xs">
+                <div class="card card-stats">
+                    <div class="card-header" data-background-color="rose">
+                        <i class="material-icons">alarm_on</i>
+                    </div>
+                    <div class="card-content">
+                        <p class="category">{{_ "ui.snapshot.newRequests"}}</p>
+                        <h3 class="card-title">{{requests_count}}</h3>
+                    </div>
+                    <div class="card-footer">
+                        <div class="stats">
+                            <i class="material-icons">zoom_in</i>
+                            <a class="btn btn-simple" href="/requests">{{_ "ui.snapshot.viewRequests"}}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6 hidden-xs">
+                <div class="card card-stats">
+                    <div class="card-header" data-background-color="green">
+                        <i class="material-icons">today</i>
+                    </div>
+                    <div class="card-content">
+                        <p class="category">{{_ "ui.snapshot.today"}}</p>
+                        <h3 class="card-title">{{today}}</h3>
+                    </div>
+                    <div class="card-footer">
+                        <div class="stats">
+                            <i class="material-icons">event_available</i>
+                            <a class="btn btn-simple" href="/calendar">Schedule</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {{> paypal_account_modal}}
+        {{else}}
+            <!-- THIS IS THE PATIENT'S DASHBOARD -->
+        <div class="row">
+            <div class="col-lg-3 col-md-6 col-sm-6 hidden-xs">
+                <div class="card card-stats">
+                    <div class="card-header" data-background-color="blue">
+                        <i class="fa fa-paypal" aria-hidden="true"></i>
+                    </div>
+                    <div class="card-content">
+                        <p class="category">My Account</p>
+                        <h3 class="card-title">{{find_paypal_email}}</h3>
+                    </div>
+                    <div class="card-footer">
+                        <div class="stats">
+                            <i class="material-icons">build</i>
+                            <a class="btn btn-simple" data-toggle="modal" id="set_paypal_account_button" data-target="#paypal_account_modal_id">
+                              Update Email
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6 hidden-xs">
+                <div class="card card-stats">
+                    <div class="card-header" data-background-color="orange">
+                        <i class="material-icons">assessment</i>
+                    </div>
+                    <div class="card-content">
+                        <p class="category">{{_ "ui.snapshot.report"}}</p>
+                        <!-- TODO: change the 0 to display approved/received reports -->
+                        <h3 class="card-title">0</h3>
+                        <!-- END TODO -->
+                    </div>
+                    <div class="card-footer">
+                        <div class="stats">
+                            <i class="material-icons">zoom_in</i>
+                            <a class="btn btn-simple" href="/report">View All</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6 hidden-xs">
+                <div class="card card-stats">
+                    <div class="card-header" data-background-color="rose">
+                        <i class="material-icons">alarm_on</i>
+                    </div>
+                    <div class="card-content">
+                        <p class="category">My Requests</p>
+                        <h3 class="card-title">{{requests_count}}</h3>
+                    </div>
+                    <div class="card-footer">
+                        <div class="stats">
+                            <i class="material-icons">zoom_in</i>
+                            <a class="btn btn-simple" href="/requests">{{_ "ui.snapshot.viewRequests"}}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6 hidden-xs">
+                <div class="card card-stats">
+                    <div class="card-header" data-background-color="green">
+                        <i class="material-icons">today</i>
+                    </div>
+                    <div class="card-content">
+                        <p class="category">My Documents</p>
+                        <h3 class="card-title">{{today}}</h3>
+                    </div>
+                    <div class="card-footer">
+
+                        <!-- THIS UPLOADS AND DISPLAYS A FILE -->
+                        
+                            <div class="fileinput fileinput-new text-center" data-provides="fileinput">
+                                <div class="fileinput-preview fileinput-exists thumbnail"></div>
+                                <div>
+                                    <span class="btn btn-rose btn-round btn-file">
+                                        <span class="fileinput-new">Upload</span>
+                                        <span class="fileinput-exists">{{_ "ui.profile.changeImage"}}</span>
+                                        <input type="file" class="file_bag" name="..." id = 'uploadDocs'>
+                                    </span>
+                                    <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> Remove</a>
+                                </div>
+                            </div>
+                        
+
+
+
+                       <!--  <div class="stats">
+                            <i class="material-icons">event_available</i>
+                            <a class="btn btn-simple" href="/calendar">Schedulezzzz</a>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    {{/if}}
+</template>
+
+<template name="paypal_account_modal">
+    <div class="modal fade" id="paypal_account_modal_id">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <form class="row" id="set_paypal_account_form" >
+                        <div class="col-md-12">
+                            <div class="form-group no-margin">
+                                <label class="control-label">{{_ "ui.profile.p-email"}}</label>
+                                <input type="email" name="paypal_email" id="paypal_email" class="form-control" value="">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-black" data-dismiss="modal" aria-label="Close">Close</button>
+                    <button class="btn btn-success" id="update_paypal_account_button" data-action="update_paypal_account_button">Update</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

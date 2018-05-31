@@ -1,0 +1,187 @@
+<template name="sidebar">
+    <nav class="navbar navbar-inverse navbar-fixed-bottom visible-xs visible-sm hidden-md hidden-lg">
+        <div class="container no-margin">
+            <ul class="nav navbar-nav mobile-bar">
+                <li class="{{activeRouteClass 'dashboard'}}">
+                    <a href="/dashboard">
+                        <i class="material-icons">dashboard</i>
+                        <p>{{_ "sidebar.dashboard"}}</p>
+                        <!--span class="notification">{{session_count}}</span-->
+                    </a>
+                </li>
+                {{#if isInRole 'doctor'}}
+                    <li class="{{activeRouteClass 'calendar'}}">
+                        <a href="/calendar" id="my_calendar">
+                            <i class="material-icons">date_range</i>
+                            <p>{{_ "sidebar.calendar"}}</p>
+                        </a>
+                    </li>
+                {{/if}}
+                <li class="{{activeRouteClass 'search'}}">
+                    <a href="/search">
+                        <i class="material-icons">search</i>
+                        <p>{{_ "sidebar.find"}}</p>
+                    </a>
+                </li>
+                <li class="{{activeRouteClass 'requests'}}">
+                    <a href="/requests">
+                        <i class="material-icons">alarm_on</i>
+                        <p>{{_ "sidebar.requests"}}</p>
+                        <!--span class="notification">{{requests_count}}</span-->
+                    </a>
+                </li>
+                <li class="{{activeRouteClass 'history'}}">
+                    <a href="/history">
+                        <i class="material-icons">history</i>
+                        <p>{{_ "sidebar.history"}}</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="sidebar" data-active-color="orange" data-background-color="black" data-image="/img/sidebar-1.jpg">
+        <div class="logo">
+            <a href="./" class="simple-text">
+                <img src="/img/logo.png" width="180">
+            </a>
+        </div>
+        <div class="logo logo-mini">
+            <a href="./" class="simple-text">
+                <img src="/img/logo_white_mini.png" width="30">
+            </a>
+        </div>
+        <div class="sidebar-wrapper">
+            {{#with user}}
+            <div class="user">
+                <a href="/profile">
+                    <div class="photo">
+                        <img src="{{avatar}}" />
+                    </div>
+                </a>
+                <div class="info">
+                    <span align="center">{{salutation}} {{contact_name}}</span>
+                    <!--a data-toggle="collapse" href="#collapseExample" class="collapsed">
+                        {{salutation}} {{firstname}} {{lastname}}
+                        <b class="caret"></b>
+                    </a>
+                    <div class="collapse" id="collapseExample">
+                        <ul class="nav">
+                            <li>
+                                <a href="/profile">My Profile</a>
+                            </li>
+                        </ul>
+                    </div-->
+                </div>
+            </div>
+            {{/with}}
+
+            {{#if isInRole 'patient'}}
+                {{> patient_sidebar_items}}
+            {{else}}
+                {{#if isInRole 'doctor'}}
+                    {{> doctor_sidebar_items}}
+                {{else}}
+                    {{#if isInRole 'admin'}}
+                        {{> admin_sidebar_items}}
+                        {{else}}
+                            {{#if isInRole 'healthOrgAdmin'}}
+                                {{> admin_sidebar_items}}
+                                {{else}}
+                                    {{#if isInRole 'employerAdmin'}}
+                                        {{> admin_sidebar_items}}
+                                    {{/if}}
+                            {{/if}}
+                    {{/if}}
+                {{/if}}
+            {{/if}}
+
+        </div>
+    </div>
+</template>
+
+<template name="patient_sidebar_items">
+    <ul class="nav hidden-xs hidden-sm">
+        <li class="{{activeRouteClass 'dashboard'}}">
+            <a href="/dashboard">
+                <i class="material-icons">dashboard</i>
+                <p>{{_ "sidebar.dashboard"}}</p>
+                <span class="notification">{{session_count}}</span>
+            </a>
+        </li>
+        <li class="{{activeRouteClass 'search'}}">
+            <a href="/search">
+                <i class="fa fa-user-md" aria-hidden="true"></i>
+                <p>{{_ "sidebar.find"}}</p>
+            </a>
+        </li>
+        <li class="{{activeRouteClass 'report'}}">
+            <a href="/report">
+                <i class="material-icons">assessment</i>
+                <p>{{_ "sidebar.report"}}</p>
+            </a>
+        </li>
+        <li class="{{activeRouteClass 'requests'}}">
+            <a href="/requests">
+                <i class="material-icons">alarm_on</i>
+                <p>{{_ "sidebar.requests"}}</p>
+                 <span class="notification">{{requests_count}}</span>
+            </a>
+        </li>
+        <li class="separator"></li>
+        <li class="{{activeRouteClass 'history'}}">
+            <a href="/history">
+                <i class="material-icons">history</i>
+                <p>{{_ "sidebar.history"}}</p>
+            </a>
+        </li>
+    </ul>
+</template>
+
+<template name="doctor_sidebar_items">
+    <ul class="nav hidden-xs">
+        <li class="{{activeRouteClass 'dashboard'}}">
+            <a href="/dashboard">
+                <i class="material-icons">dashboard</i>
+                <p>{{_ "sidebar.dashboard"}}</p>
+                <span class="notification">{{session_count}}</span>
+            </a>
+        </li>
+        <li class="{{activeRouteClass 'calendar'}}">
+            <a href="/calendar" id="my_calendar">
+                <i class="material-icons">date_range</i>
+                <p>{{_ "sidebar.calendar"}}</p>
+            </a>
+        </li>
+        <li class="{{activeRouteClass 'search'}}">
+            <a href="/search">
+                <i class="fa fa-user-md" aria-hidden="true"></i>
+                <p>{{_ "sidebar.find"}}</p>
+            </a>
+        </li>
+        <li class="{{activeRouteClass 'requests'}}">
+            <a href="/requests">
+                <i class="material-icons">alarm_on</i>
+                <p>{{_ "sidebar.requests"}}</p>
+                <span class="notification">{{requests_count}}</span>
+            </a>
+        </li>
+        <li class="separator"></li>
+        <li class="{{activeRouteClass 'history'}}">
+            <a href="/history">
+                <i class="material-icons">history</i>
+                <p>{{_ "sidebar.history"}}</p>
+            </a>
+        </li>
+    </ul>
+</template>
+
+<template name="admin_sidebar_items">
+    <ul class="nav">
+        <li class="{{activeRouteClass 'dashboard'}}">
+            <a href="/dashboard">
+                <i class="material-icons">dashboard</i>
+                <p>{{_ "sidebar.dashboard"}}</p>
+            </a>
+        </li>
+    </ul>
+</template>

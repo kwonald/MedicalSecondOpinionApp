@@ -1,0 +1,79 @@
+<template name="search_results">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
+    <link rel="stylesheet" href="lib/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="lib/simple-line-icons/css/simple-line-icons.css">
+    <link rel="stylesheet" href="lib/device-mockups/device-mockups.min.css">
+
+    {{> nav}}
+    <div class="cd-section" id="search_results" style="background-color: #ebeff4; padding: 100px 0 0 0;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h2 class="section-header">Search Results</h2>
+                        <div class="orange-divider"></div>
+                        <div class="col-sm-12" style="background-color: #fff; padding: 40px 40px 40px 40px; border: 1px solid #ccc;">
+                            <table style="width: 100%;">
+                                <tr>
+                                    <td style="padding: 0 0 10px 0;">
+                                        <p style="color: #333; font-family: 'Roboto', sans-serif; font-weight: 400; line-height: 22px; font-size: 16px;"><b>Name</b></p>
+                                    </td>
+                                    <td style="padding: 0 0 10px 0;">
+                                        <p style="color: #333; font-family: 'Roboto', sans-serif; font-weight: 400; line-height: 22px; font-size: 16px;"><b>Specialties</b></p>
+                                    </td>
+                                    <td style="padding: 0 0 10px 0;">
+                                        <p style="color: #333; font-family: 'Roboto', sans-serif; font-weight: 400; line-height: 22px; font-size: 16px;"><b>Sub-specialties</b></p>
+                                    </td>
+                                    <td style="padding: 0 0 10px 0;">
+                                        <p style="color: #333; font-family: 'Roboto', sans-serif; font-weight: 400; line-height: 22px; font-size: 16px;"><b>Licensed In</b></p>
+                                    </td>
+                                </tr>
+                                <tr style="border-top: 1px solid #e4e4e4;">
+                                    <td style="padding: 20px 0 10px 0;">
+                                        <p style="color: #333; font-family: 'Roboto', sans-serif; font-weight: 400; line-height: 22px; font-size: 16px;">Daniel Brown</p>
+                                    </td>
+                                    <td style="padding: 20px 0 10px 0;">
+                                        <p style="color: #333; font-family: 'Roboto', sans-serif; font-weight: 400; line-height: 22px; font-size: 16px;">Cardiology</p>
+                                        <p style="color: #333; font-family: 'Roboto', sans-serif; font-weight: 400; line-height: 22px; font-size: 16px;">Oncology</p>
+                                    </td>
+                                    <td style="padding: 20px 0 10px 0;">
+                                        <p style="color: #333; font-family: 'Roboto', sans-serif; font-weight: 400; line-height: 22px; font-size: 16px;">Pediatrics</p>
+                                    </td>
+                                    <td style="padding: 20px 0 10px 0;">
+                                        <p style="color: #333; font-family: 'Roboto', sans-serif; font-weight: 400; line-height: 22px; font-size: 16px;">Canada</p>
+                                    </td>
+                                </tr>
+                                <tr style="border-top: 1px solid #e4e4e4;">
+                                    <td style="padding: 20px 0 10px 0;">
+                                        <p style="color: #333; font-family: 'Roboto', sans-serif; font-weight: 400; line-height: 22px; font-size: 16px;">Tim Bennington</p>
+                                    </td>
+                                    <td style="padding: 20px 0 10px 0;">
+                                        <p style="color: #333; font-family: 'Roboto', sans-serif; font-weight: 400; line-height: 22px; font-size: 16px;">Neurology</p>
+                                    </td>
+                                    <td style="padding: 20px 0 10px 0;">
+                                        <p style="color: #333; font-family: 'Roboto', sans-serif; font-weight: 400; line-height: 22px; font-size: 16px;">Pediatrics</p>
+                                    </td>
+                                    <td style="padding: 20px 0 10px 0;">
+                                        <p style="color: #333; font-family: 'Roboto', sans-serif; font-weight: 400; line-height: 22px; font-size: 16px;">England</p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="col-sm-12" style="margin-bottom: 80px;"></div>
+                        <div class="col-sm-12" style="text-align: center;">
+                            <span class="fa fa-info-circle sicon" style="color: #e67a37; font-size: 50px; margin-bottom: 20px;" aria-hidden="true"></span>
+                            <h3 class="section-sub-header">Couldn't find your doctor?</h3><br />
+                            <h3 class="section-sub-header">Send us a request and we will try to add your doctor to the Porton platform.</h3><br />
+                            <a href="#" onclick="location.href='/#contactus';" class="btn btn-warning btn-round" style="margin-bottom: 80px;">Request a doctor</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+
+    {{> footer_landing_top}}
+    {{> footer_landing}}
+</template>

@@ -1,0 +1,155 @@
+<template name="search">
+    {{> sidebar}}
+    <div class="main-panel">
+        {{> navbar}}
+        <div class="content">
+            <div class="container-fluid">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group label-floating is-empty">
+                                    <label class="control-label">{{_ "ui.search.country"}}</label>
+                                    <select id="booking_search_country" class="form-control">
+                                        <option disabled="" selected=""></option>
+                                        <option value="Canada"> Canada </option>
+                                        <option value="Nigeria"> Nigeria </option>
+                                        <option value="USA"> United States </option>
+                                        <option value="...">...</option>
+                                    </select>
+                                    <span class="material-input"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group label-floating is-empty">
+                                    <label class="control-label">{{_ "ui.search.specialty"}}</label>
+                                    <select id="booking_search_specialty" class="form-control">
+                                        <option disabled="" selected=""></option>
+                                        {{#each search_specialty}}
+                                        <option value="{{value}}" id="{{_id}}">{{name}}</option>
+                                        {{/each}}
+                                    </select>
+                                    <span class="material-input"></span>
+                                </div>
+                            </div>
+                        
+                            <div class="col-md-4">
+                                <button type="button" class="btn btn-black btn-block" id="booking_search_reset"><i class="material-icons">refresh</i> {{_ "ui.search.reset"}}<div class="ripple-container"></div></button>
+                            </div>
+                        </div>
+                        {{>booking_search}}
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        {{> footer}}
+    </div>
+
+    <div class="modal" id="check_availability" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">{{_ "ui.search.searchTitle"}}</h4>
+                </div>
+
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="card card-calendar">
+                                <div class="card-content ps-child">
+                                    <div id="staticCalendar"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            {{#if isDesktop}}
+                            <div class="form-group">
+                                <label class="label-control">{{_ "ui.search.sessionDate"}}</label>
+                                <input type="input" class="form-control datepicker" id="request_date">
+                            </div>
+                            <div class="form-group">
+                                <label class="label-control">{{_ "ui.search.from"}}</label>
+                                <input type="input" class="form-control timepicker" id="request_start">
+                            </div>
+                            <div class="form-group">
+                                <label class="label-control">{{_ "ui.search.to"}}</label>
+                                <input type="input" class="form-control timepicker" id="request_end">
+                            </div>
+                            {{/if}}
+                            {{#if isTablet}}
+                            <div class="form-group">
+                                <label class="label-control">{{_ "ui.search.sessionDate"}}</label>
+                                <input type="date" name="date" class="form-control" id="request_date">
+                            </div>
+                            <div class="form-group">
+                                <label class="label-control">{{_ "ui.search.from"}}</label>
+                                <input type="time" name="time" class="form-control" id="request_start">
+                            </div>
+                            <div class="form-group">
+                                <label class="label-control">{{_ "ui.search.to"}}</label>
+                                <input type="time" name="time" class="form-control" id="request_end">
+                            </div>
+                            {{/if}}
+                            {{#if isPhone}}
+                                <div class="form-group">
+                                    <label class="label-control">{{_ "ui.search.sessionDate"}}</label>
+                                    <input type="date" name="date" class="form-control" id="request_date">
+                                </div>
+                                <div class="form-group">
+                                    <label class="label-control">{{_ "ui.search.from"}}</label>
+                                    <input type="time" name="time" class="form-control" id="request_start">
+                                </div>
+                                <div class="form-group">
+                                    <label class="label-control">{{_ "ui.search.to"}}</label>
+                                    <input type="time" name="time" class="form-control" id="request_end">
+                                </div>
+                            {{/if}}
+                            <div class="text-center">
+                                <button class="btn btn-black" data-dismiss="modal">{{_ "ui.search.cancel"}}<div class="ripple-container"></div></button>
+                                <button class="btn btn-success" id="request_confirm">{{_ "ui.search.request"}}<div class="ripple-container"></div></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<template name="booking_search">
+    <hr>
+    <div class="material-datatables no-more-tables">
+        <table class="table">
+            <tbody>
+            {{#each result}}
+                <tr>
+                    <td>
+                        <div class="avatar_mini">
+                            <img src="{{profile.avatar}}">
+                        </div>
+                    </td>
+                    <td>{{profile.contact_name}}</td>
+                    <td>{{profile.country}}</td>
+                    <td>{{profile.specialty_1}}</td>
+                    <td>{{profile.specialty_2}}</td>
+                    <td>{{profile.specialty_3}}</td>
+                    <td class="text-right">9.5<span> / 10</span></td>
+                    <td class="text-right">
+                        <button type="button" rel="tooltip" class="btn btn-success" id="check_availability_modal">
+                            <i class="material-icons">alarm_add</i>
+                            <span>{{_ "ui.search.book"}} </span>
+                        </button>
+                    </td>
+                </tr>
+            {{/each}}
+            </tbody>
+        </table>
+    </div>
+</template>
+
+
+
+    
+

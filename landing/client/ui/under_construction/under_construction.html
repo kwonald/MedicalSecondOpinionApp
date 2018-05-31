@@ -1,0 +1,133 @@
+<template name="under_construction">
+    {{> nav}}
+     <!-- Bootstrap Core CSS -->
+    <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
+
+    <!-- Plugin CSS -->
+    <link rel="stylesheet" href="lib/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="lib/simple-line-icons/css/simple-line-icons.css">
+    <link rel="stylesheet" href="lib/device-mockups/device-mockups.min.css">
+
+    <!-- Theme CSS -->
+    <link href="css/new-age.min.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+<div class="agileits_main" style="background-color: #e67a37; background-image: none;">
+    <div class="w3_banner">
+        <div class="container">
+            <div class="slider">
+                <div class="callbacks_container">
+                    <div style="padding-top: 80px; padding-bottom: 20px; background-color: #e67a37;">
+                        <h3 style="color: #fff; font-family: 'Poppins', sans-serif;" class="3-w3l">This page is under construction</h3>
+                    </div>
+                </div>
+           </div>
+        </div>
+    </div>
+</div>
+
+    <div class="jarallax w3ls-about w3ls-section" id="under_construction">
+        <div class="container">
+            <div class="about-head text-center">
+                <div class="col-md-12" style="text-align: center;">
+                    <span class="fa fa-frown-o sicon" style="color: #e67a37;" aria-hidden="true"></span>
+                    <h3 style="font-family: 'Poppins', sans-serif;">Oh, snap!</h3><br />
+                    <h4 style="font-family: 'Poppins', sans-serif;">This page is under construction.<br /><br />We're still working here and will be back soon.</h4><br />
+                    <a href="/" class="btn btn-warning btn-round">Get back home</a>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+
+        {{> top_footer}}
+        {{> footer}}
+
+    <script src="js/jarallax.js"></script>
+
+<script type="text/javascript">
+    /* init Jarallax */
+    $('.jarallax').jarallax({
+        speed: 0.5,
+        imgWidth: 1366,
+        imgHeight: 768
+    })
+</script>
+<!-- here starts scrolling icon -->
+        <!-- start-smoth-scrolling -->
+        <script type="text/javascript" src="js/move-top.js"></script>
+        <script type="text/javascript" src="js/easing.js"></script>
+        <script type="text/javascript">
+            jQuery(document).ready(function($) {
+                $(".scroll").click(function(event){
+                    event.preventDefault();
+                    $('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+                });
+            });
+        </script>
+        <!-- /ends-smoth-scrolling -->
+    <!-- //here ends scrolling icon -->
+    <!--start-date-piker-->
+        <link rel="stylesheet" href="css/jquery-ui.css" />
+        <script src="js/jquery-ui.js"></script>
+            <script>
+                $(function() {
+                $( "#datepicker,#datepicker1" ).datepicker();
+                });
+            </script>
+<!-- //End-date-piker -->
+<!-- here starts scrolling icon -->
+        <script type="text/javascript">
+            $(document).ready(function() {
+                /*
+                    var defaults = {
+                    containerID: 'toTop', // fading element id
+                    containerHoverID: 'toTopHover', // fading element hover id
+                    scrollSpeed: 1200,
+                    easingType: 'linear'
+                    };
+                */
+
+                $().UItoTop({ easingType: 'easeOutQuart' });
+
+                });
+        </script>
+<!--tabs-->
+        <script src="js/easy-responsive-tabs.js"></script>
+        <script>
+        $(document).ready(function () {
+        $('#horizontalTab').easyResponsiveTabs({
+        type: 'default', //Types: default, vertical, accordion
+        width: 'auto', //auto or any width like 600px
+        fit: true,   // 100% fit in a container
+        closed: 'accordion', // Start closed if in accordion view
+        activate: function(event) { // Callback function if tab is switched
+        var $tab = $(this);
+        var $info = $('#tabInfo');
+        var $name = $('span', $info);
+        $name.text($tab.text());
+        $info.show();
+        }
+        });
+        $('#verticalTab').easyResponsiveTabs({
+        type: 'vertical',
+        width: 'auto',
+        fit: true
+        });
+        });
+        </script>
+<!--//tabs-->
+
+</template>

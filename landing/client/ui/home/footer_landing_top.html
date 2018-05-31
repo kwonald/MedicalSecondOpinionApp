@@ -1,0 +1,69 @@
+<template name="footer_landing_top">
+    <!--     *********    Section 10      *********      -->
+    <div class="cd-section" id="footer_landing_top" style="background-color: #ebeff4; padding: 80px 0 60px 0; border-top: 1px solid #ccc;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="col-sm-3" style="padding-bottom: 20px;">
+                             <h4 style="font-family: 'Poppins', sans-serif; font-weight: 500;">Learn more</h4>
+                             <br />
+                             <a href="#" onclick="location.href='/about';"><p style="color: #333; font-family: 'Roboto', sans-serif; font-weight: 400; line-height: 22px; font-size: 16px; text-align: left;">About</p></a>
+                             <a href="#"><p style="color: #333; font-family: 'Roboto', sans-serif; font-weight: 400; line-height: 22px; font-size: 16px; text-align: left;">Blog</p></a>
+                             <a href="#" onclick="location.href='/careers';"><p style="color: #333; font-family: 'Roboto', sans-serif; font-weight: 400; line-height: 22px; font-size: 16px; text-align: left;">Careers</p></a>
+                             <a href="#" onclick="location.href='/investor_relations';"><p style="color: #333; font-family: 'Roboto', sans-serif; font-weight: 400; line-height: 22px; font-size: 16px; text-align: left;">Investor Relations</p></a>
+                             <a href="#"><p style="color: #333; font-family: 'Roboto', sans-serif; font-weight: 400; line-height: 22px; font-size: 16px; text-align: left;">Newsfeed</p></a>
+                        </div>
+                        <div class="col-sm-3" style="padding-bottom: 20px;">
+                             <h4 style="font-family: 'Poppins', sans-serif; font-weight: 500;">Solutions</h4>
+                             <br />
+                             <a href="#" onclick="location.href='/general_practice';"><p style="color: #333; font-family: 'Roboto', sans-serif; font-weight: 400; line-height: 22px; font-size: 16px; text-align: left;">General / Family Practice</p></a>
+                             <a href="#" onclick="location.href='/specialist_services';"><p style="color: #333; font-family: 'Roboto', sans-serif; font-weight: 400; line-height: 22px; font-size: 16px; text-align: left;">Specialist Services</p></a>
+                             <a href="#" onclick="location.href='/second_opinion';"><p style="color: #333; font-family: 'Roboto', sans-serif; font-weight: 400; line-height: 22px; font-size: 16px; text-align: left;">Second Opinion</p></a>
+                             <a href="#" onclick="location.href='/health_programs';"><p style="color: #333; font-family: 'Roboto', sans-serif; font-weight: 400; line-height: 22px; font-size: 16px; text-align: left;">Health Programs</p></a>
+                        </div>
+                        <div class="col-sm-3" style="padding-bottom: 20px;">
+                             <h4 style="font-family: 'Poppins', sans-serif; font-weight: 500;">Clients & Partners</h4>
+                             <br />
+                             <a href="#" onclick="location.href='/#services';"><p style="color: #333; font-family: 'Roboto', sans-serif; font-weight: 400; line-height: 22px; font-size: 16px; text-align: left;">Patients & Caregivers</p></a>
+                             <a href="#" onclick="location.href='/#services';"><p style="color: #333; font-family: 'Roboto', sans-serif; font-weight: 400; line-height: 22px; font-size: 16px; text-align: left;">Employers</p></a>
+                             <a href="#" onclick="location.href='/#services';"><p style="color: #333; font-family: 'Roboto', sans-serif; font-weight: 400; line-height: 22px; font-size: 16px; text-align: left;">Physicians</p></a>
+                             <a href="#" onclick="location.href='/medical_organizations';"><p style="color: #333; font-family: 'Roboto', sans-serif; font-weight: 400; line-height: 22px; font-size: 16px; text-align: left;">Medical Organizations</p></a>
+                        </div>
+                        <div class="col-sm-3" style="padding-bottom: 20px;">
+                             <h4 style="font-family: 'Poppins', sans-serif; font-weight: 500;">Notices</h4>
+                             <br />
+                             <a href="#" onclick="location.href='/terms_and_conditions';"><p style="color: #333; font-family: 'Roboto', sans-serif; font-weight: 400; line-height: 22px; font-size: 16px; text-align: left;">Terms & Conditions</p></a>
+                             <a href="#" onclick="location.href='/privacy';"><p style="color: #333; font-family: 'Roboto', sans-serif; font-weight: 400; line-height: 22px; font-size: 16px; text-align: left;">Privacy Policy</p></a>
+                             <a href="#" onclick="location.href='/hipaa_compliance';"><p style="color: #333; font-family: 'Roboto', sans-serif; font-weight: 400; line-height: 22px; font-size: 16px; text-align: left;">HIPAA Compliance</p></a>
+                             <a href="/demo" target="_blank"><p style="color: #333; font-family: 'Roboto', sans-serif; font-weight: 400; line-height: 22px; font-size: 16px; text-align: left;">Test browser (Demo)</p></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+
+    <script>
+    /*$(function() {
+           $('a[href*="/#"]:not([href="#"])').click(function() {
+             if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+               var target = $(this.hash);
+               target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+               if (target.length) {
+                 $('html, body').animate({
+                   scrollTop: target.offset().top
+                 }, 1000);
+                 return false;
+               }
+             }
+           });
+       });*/
+
+    var hash = window.location.hash;
+       if ($(hash).length) {  // if hash exists on page
+         $('html,body').animate({
+           scrollTop: $(hash).offset().top
+         }, 200);
+       }
+    </script>
+
+</template>

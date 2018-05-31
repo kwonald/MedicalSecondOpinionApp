@@ -1,0 +1,72 @@
+<template name="nav">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!-- <a class="navbar-brand" href="/"><img src="/img/logo_white.png" width="120"></a> -->
+                <a class="navbar-brand" href="#" onclick="location.href='/';"><img src="/img/logo-try6.png" height="37"></a>
+                <!-- <span class="tagline hidden-xs">your choice for an alternate health opinion</span> -->
+                <!-- <span class="tagline hidden-xs">Your choice for an alternate health opinion</span> -->
+            </div>
+            <div class="collapse navbar-collapse" id="top-nav">
+                <ul class="nav navbar-nav navbar-right">
+                    <!-- <li class="{{activeRouteClass 'home'}}">
+                        <a href="/">
+                            <i class="material-icons">home</i>
+                            <span class="cd-label">{{_ "nav.home"}}</span>
+                        </a>
+                    </li> -->
+                    <li>
+                        <a href="#">
+                            <i class="material-icons">chrome_reader_mode</i> Newsfeed
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="material-icons">speaker_notes</i> Blog
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="location.href='/faq';">
+                            <i class="material-icons">question_answer</i> FAQ
+                        </a>
+                    </li>
+                    <!-- <li class="{{activeRouteClass 'terms'}}">
+                        <a href="#">
+                            <i class="material-icons">info</i> {{_ "nav.terms"}}
+                        </a>
+                    </li> -->
+                    {{#if currentUser}}
+                    <li class="{{activeRouteClass 'dashboard'}}" style="color:#e67a37;">
+                        <a href="/dashboard">
+                            <i class="material-icons">dashboard</i> {{_ "nav.dashboard"}}
+                        </a>
+                    </li>
+                    {{else}}
+                    <li>
+                        <a href="/demo" target="_blank">
+                            <i class="material-icons">important_devices</i> Demo
+                        </a>
+                    </li>
+                    <li class="{{activeRouteClass 'login'}}">
+                        <a href="/login">
+                            <i class="material-icons">perm_identity</i> Login
+                        </a>
+                    </li>
+                    <li class="{{activeRouteClass 'register'}}">
+                        <a href="/register">
+                            <i class="material-icons">person_add</i> {{_ "nav.register"}}
+                        </a>
+                    </li>
+                    {{/if}}
+                    <!-- <li>{{> i18n_dropdown}}</li> -->
+                </ul>
+            </div>
+        </div>
+    </nav>
+</template>

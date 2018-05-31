@@ -1,0 +1,113 @@
+<template name="register">
+    {{> nav}}
+    <div class="wrapper wrapper-full-page">
+        <div class="full-page register-page" filter-color="black" data-image="/img/bg_physician.jpg">
+            <div class="container">
+                <div class="wizard-container">
+                    <div class="card wizard-card" data-color="rose" id="wizardProfile">
+                        <form action="" method="" novalidate="novalidate" id="register-form">
+                            <div class="wizard-header">
+                                <h4 class="wizard-title" style="font-family: 'Poppins', sans-serif; font-weight: 500; padding-top: 20px;">
+                                    {{_ "landing.register"}}
+                                </h4>
+                            </div>
+                            <div class="wizard-navigation">
+                                <ul class="nav nav-pills">
+                                    <li style="width: 50%;" class="active">
+                                        <a href="#about" data-toggle="tab" aria-expanded="true">{{_ "landing.type"}}</a>
+                                    </li>
+                                    <li style="width: 50%;" class="">
+                                        <a href="#account" data-toggle="tab" aria-expanded="false">{{_ "landing.info"}}</a>
+                                    </li>
+                                </ul>
+                                <div class="moving-tab" style="width: 235.552px; transform: translate3d(-8px, 0px, 0px); transition: all 0.5s cubic-bezier(0.29, 1.42, 0.79, 1);">About</div></div>
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="about">
+                                    <div class="row">
+                                        <h4 class="info-text" style="font-family: 'Poppins', sans-serif; font-weight: 500;">{{_ "landing.guide"}} ...</h4>
+                                        <div class="col-sm-3">
+                                            <div class="choice" id="patientreg" data-toggle="wizard-radio" >
+                                                <div class="icon">
+                                                    <img class="img" src="/img/faces/patient.jpg">
+                                                
+                                                </div>
+                                                <h6>{{_ "landing.patient"}}</h6>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <div class="choice" id="employerreg" data-toggle="wizard-radio">
+                                                <input type="checkbox" id="employer" name="employer" value="Employer">
+                                                <div class="icon">
+                                                    <img class="img" src="/img/faces/employer.jpg">
+                                                </div>
+                                                <h6>{{_ "landing.employer"}}</h6>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <div class="choice" id="doctorreg" data-toggle="wizard-radio">
+                                                <input type="checkbox" name="doctor" value="Doctor">
+                                                <div class="icon">
+                                                    <img class="img" src="/img/faces/physicians.jpg">
+                                                </div>
+                                                <h6>{{_ "landing.doctor"}}</h6>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <div class="choice" id="organizationreg" data-toggle="wizard-radio">
+                                                <input type="checkbox" name="organization" value="Organization">
+                                                <div class="icon">
+                                                    <img class="img" src="/img/faces/organization.jpg">
+                                                </div>
+                                                <h6>{{_ "landing.organization"}}</h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {{#if register_for_healthAdmin}}
+                                    {{>organization_register}}
+                                    {{else}}
+                                    {{#if register_for_employerAdmin}}
+                                        {{>employer_register}}
+                                        {{else}}
+                                        {{#if register_for_patient}}
+                                            {{>patient_register}}
+                                            {{else}}
+                                                {{>doctor_register}}
+                                        {{/if}}
+                                    {{/if}}
+                                {{/if}}
+                                
+                                
+                            </div>
+                            <div class="wizard-footer">
+                                <div class="pull-right">
+                                    <input id='next' type="button" class="btn btn-next btn btn-warning btn-round" name="next" value="{{_ "landing.next"}}">
+<!-- 
+                                    {{#if register_for_patient}}
+                                        {{else}} -->
+                                            <!-- For alpha, we did not want patients to be able to sign up so we do not let them 'finish' registering. Instead their only option is to fill the contact form for submission -->
+                                            <input type="button" class="btn btn-finish btn btn-warning btn-round" name="finish" value="{{_ "landing.finish"}}">
+                                    <!-- {{/if}} -->
+                                    
+                                </div>
+                                <div class="pull-left">
+                                    <input id='previous' type="button" style="background-color: #999999; border-color: #999999;" class="btn btn-previous btn btn-warning btn-round" name="previous" value="{{_ "landing.previous"}}">
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </form>
+                        <div class="col-md-12 checkbox">
+                            <label>
+                                {{_ "landing.haveAccount"}}?
+                            </label>
+                            <a href = "/login">
+                                {{_ "landing.loginHere"}}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
